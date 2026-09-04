@@ -18,7 +18,7 @@ doc = Document()
 s = doc.sections[0]
 s.page_width, s.page_height = Cm(21.0), Cm(29.7)
 s.left_margin = s.right_margin = s.top_margin = s.bottom_margin = Cm(2.54)
-normal = doc.styles["Normal"]; normal.font.name = "Times New Roman"; normal.font.size = Pt(12)
+normal = doc.styles["Normal"]; normal.font.name = "Times New Roman"; normal.font.size = Pt(11)
 normal._element.rPr.rFonts.set(qn('w:eastAsia'), "Times New Roman")
 pf = normal.paragraph_format; pf.alignment = AL.JUSTIFY; pf.space_after = Pt(6); pf.line_spacing = 1.0
 
@@ -26,7 +26,7 @@ def _font(run, name="Times New Roman", size=12, bold=False, italic=False):
     run.font.name = name; run.font.size = Pt(size); run.bold = bold; run.italic = italic
     run._element.rPr.rFonts.set(qn('w:eastAsia'), name)
 
-def para(text="", align=AL.JUSTIFY, bold=False, italic=False, size=12, space_after=6, first_indent=None):
+def para(text="", align=AL.JUSTIFY, bold=False, italic=False, size=11, space_after=6, first_indent=None):
     p = doc.add_paragraph(); p.alignment = align; p.paragraph_format.space_after = Pt(space_after)
     if first_indent: p.paragraph_format.first_line_indent = Cm(first_indent)
     if text: _font(p.add_run(text), "Times New Roman", size, bold, italic)
@@ -34,7 +34,7 @@ def para(text="", align=AL.JUSTIFY, bold=False, italic=False, size=12, space_aft
 
 def runs_para(segments, align=AL.JUSTIFY, space_after=6):
     p = doc.add_paragraph(); p.alignment = align; p.paragraph_format.space_after = Pt(space_after)
-    for t, b, i in segments: _font(p.add_run(t), "Times New Roman", 12, b, i)
+    for t, b, i in segments: _font(p.add_run(t), "Times New Roman", 11, b, i)
     return p
 
 def h1(text):
@@ -74,64 +74,57 @@ def tabla_csv(csv_path, caption):
     doc.add_paragraph().paragraph_format.space_after = Pt(4)
 
 # ============================== PORTADA ==============================
-para("Aprendizaje automático interpretable para la estratificación de candidatos a trasplante de islotes "
-     "en diabetes tipo 1: un sistema de apoyo a la decisión sobre datos reales de monitoreo continuo de "
-     "glucosa", align=AL.CENTER, bold=True, size=14, space_after=4)
-para("Interpretable Machine Learning for Stratifying Islet Transplantation Candidates in Type 1 Diabetes: "
-     "A Clinical Decision-Support Approach on Real-World Continuous Glucose Monitoring Data",
+para("¿Cura la diabetes? Avances y desafíos del trasplante de islotes pancreáticos y la selección de "
+     "candidatos a partir de datos reales de monitoreo continuo de glucosa",
+     align=AL.CENTER, bold=True, size=14, space_after=4)
+para("Does It Cure Diabetes? Advances and Challenges of Pancreatic Islet Transplantation and Candidate "
+     "Selection Using Real-World Continuous Glucose Monitoring Data",
      align=AL.CENTER, italic=True, size=11, space_after=10)
 para("Magali Bolivar, María Florencia Rossi, Matías Montiel, Nestor Balich, Franco Balich", align=AL.CENTER, space_after=2)
 para("CAETI - Centro de Altos Estudios en Tecnología Informática", align=AL.CENTER, space_after=0)
 para("Universidad Abierta Interamericana. Informática (UAI)", align=AL.CENTER, space_after=0)
 para("Montes de Oca 745. Ciudad Autónoma de Buenos Aires, Argentina.", align=AL.CENTER, space_after=2)
-para("{MagaliFlorencia.BolivarCruz, MariaFlorencia.Rossi, MatiasNicolas.MontielTorres}@alumnos.uai.edu.ar", align=AL.CENTER, space_after=0)
-para("{nestor.balich, francoadrian.balich}@uai.edu.ar", align=AL.CENTER, space_after=10)
+para("{MagaliFlorencia.BolivarCruz, MariaFlorencia.Rossi, MatiasNicolas.MontielTorres}@alumnos.uai.edu.ar", align=AL.CENTER, italic=True, space_after=0)
+para("{nestor.balich, francoadrian.balich}@uai.edu.ar", align=AL.CENTER, italic=True, space_after=10)
 
 # ============================== RESUMEN ==============================
 h1("Resumen")
-para("El trasplante alogénico de islotes pancreáticos (Protocolo Edmonton) es una alternativa terapéutica "
-"para la diabetes mellitus tipo 1 (DM1), reservada para pacientes con inestabilidad metabólica severa e "
-"hipoglucemias inadvertidas, dado que exige inmunosupresión crónica con riesgo de toxicidad. Nuevas terapias "
-"como el tegoprubart (anticuerpo anti-CD40L) buscan reducir esa toxicidad, pero la selección del paciente "
-"sigue siendo determinante: el beneficio solo supera al riesgo en quienes presentan un perfil de labilidad "
-"glucémica marcada. Este trabajo aplica un pipeline reproducible de ciencia de datos para cuantificar, sobre "
-"datos reales, qué proporción de una población de DM1 cumple los criterios de candidatura. Se procesaron "
-"14,8 millones de lecturas de monitoreo continuo de glucosa (CGM) de 226 adultos con DM1 del estudio "
-"REPLACE-BG, calculando las métricas del consenso internacional (coeficiente de variación, tiempo en rango y "
-"tiempo en hipoglucemia) e integrándolas con cuestionarios de percepción de hipoglucemia. Se operacionalizaron "
-"los criterios de Edmonton, se compararon los subgrupos, se segmentaron fenotipos glucémicos (PCA + K-Means) "
-"y se estimó una regresión logística de la hipoglucemia inadvertida. La variabilidad glucémica alta (%CV ≥ 36%) "
-"afectó al 64,6% de la cohorte y la hipoglucemia inadvertida al 17,3%, pero solo el 3,5% reunió el perfil "
-"completo de labilidad compatible con la indicación de trasplante. La hipoglucemia inadvertida se asoció a la "
-"duración de la DM1 y a la edad, y no a las métricas de CGM del momento. Los resultados aportan una "
-"herramienta objetiva y reproducible para priorizar candidatos y respaldan cuantitativamente que el "
-"trasplante debe reservarse para un subgrupo minoritario y bien caracterizado. Desde la perspectiva de la "
-"informática, el aporte central es un pipeline de ciencia de datos escalable y un sistema de aprendizaje "
-"automático interpretable que, en línea con el paradigma del factor humano de la inteligencia artificial "
-"(Humanware 5.0), no reemplaza el juicio clínico sino que lo asiste con evidencia cuantitativa y trazable.")
+para("El trasplante de islotes pancreáticos promete algo que hasta hace poco parecía inalcanzable: liberar "
+"de la insulina a una persona con diabetes tipo 1. El Protocolo Edmonton y, más recientemente, inmunoterapias "
+"como el tegoprubart han acercado esa promesa, pero a un costo —la inmunosupresión de por vida— que solo se "
+"justifica en los casos más graves: quienes sufren hipoglucemias severas e inadvertidas y una glucemia "
+"verdaderamente inestable. La pregunta práctica, entonces, no es solo si el trasplante cura, sino a quién "
+"conviene ofrecérselo. Este trabajo la aborda con datos reales: se procesaron 14,8 millones de lecturas de "
+"monitoreo continuo de glucosa (CGM) de 226 adultos con diabetes tipo 1 del estudio REPLACE-BG y, a partir de "
+"la señal cruda, se reconstruyeron las métricas del consenso internacional —variabilidad, tiempo en rango y "
+"tiempo en hipoglucemia— para traducir la 'labilidad' clínica en criterios objetivos y reproducibles. Aunque "
+"el mal control resultó frecuente —dos de cada tres pacientes con variabilidad alta o tiempo en rango "
+"insuficiente—, solo el 3,5 % reunió el perfil completo que justificaría evaluar un trasplante. Además, la "
+"hipoglucemia inadvertida se asoció con los años de enfermedad y la edad, y no con las métricas de glucosa "
+"del momento, lo que sugiere que la decisión no puede apoyarse únicamente en el CGM reciente. El resultado es "
+"una herramienta objetiva y reproducible para priorizar a los candidatos, que respalda con números la "
+"necesidad de una selección estricta.", italic=True)
 runs_para([("Palabras clave: ", True, False),
-("aprendizaje automático interpretable; sistema de apoyo a la decisión; monitoreo continuo de glucosa; "
-"diabetes tipo 1; trasplante de islotes; ciencia de datos.", False, False)])
+("trasplante de islotes; diabetes tipo 1; monitoreo continuo de glucosa; labilidad glucémica; "
+"estratificación de candidatos; ciencia de datos.", False, True)])
 h1("Abstract")
-para("Allogeneic pancreatic islet transplantation (Edmonton Protocol) is a therapeutic option for type 1 "
-"diabetes (T1D), reserved for patients with severe metabolic instability and impaired awareness of "
-"hypoglycemia, since it requires chronic immunosuppression with toxicity risk. Novel therapies such as "
-"tegoprubart (anti-CD40L antibody) aim to reduce that toxicity, but patient selection remains decisive: the "
-"benefit outweighs the risk only in those with marked glycemic lability. This work applies a reproducible "
-"data-science pipeline to quantify, on real-world data, what fraction of a T1D population meets candidacy "
-"criteria. We processed 14.8 million continuous glucose monitoring (CGM) readings from 226 adults with T1D "
-"from the REPLACE-BG study, computing international-consensus metrics and integrating them with hypoglycemia "
-"perception questionnaires. High glycemic variability (%CV ≥ 36%) affected 64.6% of the cohort and impaired "
-"awareness of hypoglycemia 17.3%, yet only 3.5% met the full lability profile compatible with transplant "
-"indication. Impaired awareness was associated with T1D duration and age rather than with current CGM "
-"metrics. The results provide an objective, reproducible tool to prioritize candidates and quantitatively "
-"support reserving transplantation for a small, well-characterized subgroup. From an informatics "
-"standpoint, the main contribution is a scalable data-science pipeline and an interpretable machine-learning "
-"system that, in line with the human-factor-of-AI paradigm (Humanware 5.0), assists—rather than replaces—"
-"clinical judgment with quantitative, traceable evidence.", italic=True)
+para("Pancreatic islet transplantation offers something long thought out of reach: freeing a person with "
+"type 1 diabetes from insulin. The Edmonton Protocol and, more recently, immunotherapies such as tegoprubart "
+"have brought that promise closer, but at a cost —lifelong immunosuppression— that is only justified in the "
+"most severe cases: patients with severe, impaired-awareness hypoglycemia and truly unstable glucose. The "
+"practical question is therefore not only whether transplantation cures, but for whom it is worth it. We "
+"address it with real data: we processed 14.8 million continuous glucose monitoring (CGM) readings from 226 "
+"adults with type 1 diabetes in the REPLACE-BG study and, from the raw signal, reconstructed the "
+"international-consensus metrics —variability, time in range and time in hypoglycemia— to turn clinical "
+"'lability' into objective, reproducible criteria. Although poor control was common —two of every three "
+"patients had high variability or insufficient time in range— only 3.5% met the full profile that would "
+"justify evaluating a transplant. Moreover, impaired awareness of hypoglycemia was associated with disease "
+"duration and age rather than current glucose metrics, suggesting the decision cannot rest on recent CGM "
+"alone. The result is an objective, reproducible tool to prioritize candidates that quantitatively supports "
+"strict selection.", italic=True)
 runs_para([("Keywords: ", True, True),
-("interpretable machine learning; clinical decision support; continuous glucose monitoring; type 1 "
-"diabetes; islet transplantation; data science.", False, True)])
+("islet transplantation; type 1 diabetes; continuous glucose monitoring; glycemic lability; "
+"candidate stratification; data science.", False, True)])
 
 # ============================== 1. INTRODUCCIÓN ==============================
 h1("1. Introducción")
@@ -154,13 +147,12 @@ para("La selección de candidatos, no obstante, se apoya con frecuencia en crite
 "a hipoglucemia. El objetivo de este trabajo es construir, con datos reales y un pipeline reproducible, una "
 "estratificación objetiva de candidatos a trasplante de islotes, cuantificando en una población de DM1 la "
 "prevalencia de los criterios de labilidad glucémica que definen la indicación.", first_indent=0.5)
-para("Desde la óptica de la informática, el trabajo aborda tres desafíos característicos de la ciencia de "
-"datos en salud: (i) la ingeniería de datos a gran escala —el procesamiento en flujo (streaming) de casi 15 "
-"millones de registros de sensores—; (ii) la construcción de variables clínicas interpretables a partir de "
-"señales crudas; y (iii) el uso de modelos de aprendizaje automático interpretables (segmentación no "
-"supervisada y regresión) como soporte a la decisión. Este enfoque se alinea con el paradigma del factor "
-"humano de la inteligencia artificial (Humanware 5.0): la IA no sustituye al profesional, sino que amplifica "
-"su capacidad de decidir con evidencia objetiva, trazable y reproducible.", first_indent=0.5)
+para("El desafío no es menor del lado de los datos. Trabajar con casi 15 millones de registros de sensor "
+"obliga a procesarlos en flujo, sin cargarlos enteros en memoria, y a reconstruir a partir de la señal cruda "
+"las variables clínicas que realmente importan; recién sobre esa base tiene sentido buscar patrones y "
+"modelar el riesgo. Ese recorrido —de la señal al criterio de candidatura— se documentó de principio a fin "
+"para que cualquier equipo pueda repetirlo y auditarlo, y se concibió como apoyo a la decisión clínica: una "
+"herramienta que ordena la evidencia, no que reemplaza el juicio del profesional.", first_indent=0.5)
 
 # ============================== 2. MARCO CONCEPTUAL ==============================
 h1("2. Marco conceptual")
@@ -229,7 +221,8 @@ para("La mayoría de la cohorte no alcanzaba los objetivos de consenso: el 71,7%
 "insuficiente y el 64,6% una variabilidad glucémica alta (Figura 1, Tabla 2). La exposición excesiva a "
 "hipoglucemia afectaba al 34,5% y la hipoglucemia inadvertida al 17,3%. Sin embargo, al exigir el perfil "
 "completo de labilidad (hipoglucemia inadvertida más exposición excesiva a hipoglucemia), solo el 3,5% de la "
-"cohorte (8 pacientes) reunía la condición compatible con la indicación de trasplante. La Figura 2 muestra "
+"cohorte (8 pacientes) reunía la condición compatible con la indicación de trasplante (intervalo de "
+"confianza del 95% de Wilson: 1,8–6,8%). La Figura 2 muestra "
 "las distribuciones de las métricas clave frente a los umbrales de consenso.")
 tabla_csv(TAB/"tabla2_prevalencia_criterios.csv", "Tabla 2. Prevalencia de los criterios de candidatura en la cohorte.")
 figura(FIG/"fig1_prevalencia_criterios.png", "Figura 1. Prevalencia de los criterios de candidatura a trasplante de islotes; en naranja, el perfil de labilidad completo.", width=15)
@@ -261,7 +254,9 @@ para("La regresión logística (Tabla 5) mostró que la hipoglucemia inadvertida
 "cuestionarios clínicos con métricas objetivas para identificar candidatos. El modelo es globalmente "
 "significativo (test de razón de verosimilitud, p<0,001) y no presenta multicolinealidad (VIF < 2,4 en todos "
 "los predictores); la significación de la duración y la edad se mantiene bajo errores estándar robustos "
-"(HC1), lo que respalda la solidez del resultado.")
+"(HC1), lo que respalda la solidez del resultado. Con 39 eventos de hipoglucemia inadvertida para cinco "
+"predictores —cerca de ocho eventos por variable—, el modelo se mantiene dentro de los márgenes habituales "
+"de estabilidad, aunque sus estimaciones deben leerse con la prudencia propia de una muestra acotada.")
 tabla_csv(TAB/"tabla5_logit_iah.csv", "Tabla 5. Regresión logística de la hipoglucemia inadvertida (IAH): odds ratios, p-valores clásicos y robustos (HC1) y VIF.")
 
 # ============================== 5. DISCUSIÓN ==============================
@@ -272,12 +267,28 @@ para("Los resultados cuantifican una intuición clínica central del trasplante 
 "(3,5%). Esto respalda de forma empírica la recomendación de reservar el procedimiento —y las nuevas terapias "
 "como el tegoprubart— para un subgrupo cuidadosamente seleccionado, y advierte contra una indicación "
 "guiada solo por el mal control global.", first_indent=0.5)
+para("Ese 3,5% ayuda además a dimensionar el problema. Proyectado sobre el conjunto de personas con diabetes "
+"tipo 1, incluso una fracción pequeña representa un número nada despreciable de candidatos potenciales que "
+"hoy podrían no estar siendo identificados de manera sistemática. Al mismo tiempo, la estrechez del grupo "
+"explica por qué los programas de trasplante operan con listas reducidas y por qué una selección laxa, "
+"guiada solo por el mal control, expondría a muchos pacientes a la toxicidad de la inmunosupresión sin un "
+"beneficio proporcional. El valor del enfoque propuesto es, precisamente, ofrecer un criterio cuantitativo y "
+"repetible para trazar esa línea con transparencia, allí donde la práctica todavía se apoya en gran medida "
+"en la valoración cualitativa.", first_indent=0.5)
 para("El hallazgo de que la hipoglucemia inadvertida depende de la duración y la edad, y no de las métricas "
 "de CGM del momento, tiene una implicancia práctica: la estratificación de candidatos no puede basarse "
 "únicamente en el CGM reciente, sino que debe integrar la historia clínica y la evaluación de la percepción "
 "de hipoglucemia. La combinación de ambas fuentes —como propone este pipeline— ofrece una herramienta "
 "objetiva y reproducible para priorizar la evaluación pretrasplante.", first_indent=0.5)
-para("Entre las limitaciones, REPLACE-BG es una población de DM1 con buen control basal en la que la "
+para("El momento en que se plantea esta pregunta no es casual. Las nuevas inmunoterapias —el tegoprubart y "
+"otros esquemas libres de inhibidores de calcineurina— están corriendo la frontera de lo posible: prometen "
+"la independencia de insulina con menor toxicidad y, si esa promesa se confirma, ampliarán el universo de "
+"pacientes para quienes el trasplante sea una opción razonable. Paradójicamente, eso vuelve más necesaria —y "
+"no menos— una selección rigurosa: cuanto más se acerque el trasplante a una verdadera cura, más importará "
+"decidir con transparencia quién se beneficia y en qué momento. Un criterio reproducible como el que aquí se "
+"propone busca aportar a esa discusión, que todavía descansa en gran medida en la experiencia clínica "
+"individual.", first_indent=0.5)
+para("Entre las limitaciones, REPLACE-BG es una población de DM1 con buen control basal en la que la"
 "hipoglucemia severa fue criterio de exclusión, por lo que la prevalencia del perfil de labilidad "
 "probablemente subestima la de una población con indicación real de trasplante; el diseño es transversal y "
 "la definición operacional de candidatura es un proxy de los criterios clínicos completos. No obstante, el "
@@ -290,9 +301,10 @@ para("Se presentó un pipeline reproducible de ciencia de datos que, sobre 14,8 
 "islotes. La variabilidad glucémica alta y el tiempo en rango insuficiente son muy frecuentes, pero el "
 "perfil de labilidad severa es minoritario (3,5%), lo que respalda una selección estricta de candidatos. La "
 "hipoglucemia inadvertida se asoció a la duración de la enfermedad y a la edad más que al CGM del momento. "
-"El aporte, desde la informática, es un pipeline reproducible y un modelo de aprendizaje automático "
-"interpretable que materializa el paradigma del factor humano de la IA (Humanware 5.0): un sistema de apoyo "
-"a la decisión que asiste —sin reemplazar— el juicio clínico.", first_indent=0.5)
+"Más allá del hallazgo clínico, el trabajo deja un procedimiento reproducible —de la señal cruda al criterio "
+"de candidatura— que puede auditarse y reutilizarse en otras cohortes, y que se plantea como apoyo a la "
+"decisión, en sintonía con el factor humano de la inteligencia artificial (Humanware 5.0): una herramienta "
+"que asiste, sin reemplazar, el juicio del profesional.", first_indent=0.5)
 para("Como líneas futuras se plantea: (i) aplicar el pipeline a cohortes con indicación real de trasplante "
 "(p. ej., registros CIT/CITR mediante solicitud de acceso); (ii) incorporar índices de labilidad glucémica "
 "validados (LI, MAGE, ADRR) y modelos de predicción de hipoglucemia severa; (iii) integrar datos de los "
