@@ -97,7 +97,8 @@ para("El trasplante de islotes pancreáticos promete algo que hasta hace poco pa
 "conviene ofrecérselo. Este trabajo la aborda con datos reales: se procesaron 14,8 millones de lecturas de "
 "monitoreo continuo de glucosa (CGM) de 226 adultos con diabetes tipo 1 del estudio REPLACE-BG y, a partir de "
 "la señal cruda, se reconstruyeron las métricas del consenso internacional —variabilidad, tiempo en rango y "
-"tiempo en hipoglucemia— para traducir la 'labilidad' clínica en criterios objetivos y reproducibles. Aunque "
+"tiempo en hipoglucemia— y los índices de riesgo validados de Kovatchev (LBGI, HBGI, ADRR), para traducir la "
+"'labilidad' clínica en criterios objetivos y reproducibles. Aunque "
 "el mal control resultó frecuente —dos de cada tres pacientes con variabilidad alta o tiempo en rango "
 "insuficiente—, solo el 3,5 % reunió el perfil completo que justificaría evaluar un trasplante. Además, la "
 "hipoglucemia inadvertida se asoció con los años de enfermedad y la edad, y no con las métricas de glucosa "
@@ -115,8 +116,9 @@ para("Pancreatic islet transplantation offers something long thought out of reac
 "practical question is therefore not only whether transplantation cures, but for whom it is worth it. We "
 "address it with real data: we processed 14.8 million continuous glucose monitoring (CGM) readings from 226 "
 "adults with type 1 diabetes in the REPLACE-BG study and, from the raw signal, reconstructed the "
-"international-consensus metrics —variability, time in range and time in hypoglycemia— to turn clinical "
-"'lability' into objective, reproducible criteria. Although poor control was common —two of every three "
+"international-consensus metrics —variability, time in range and time in hypoglycemia— and the validated "
+"Kovatchev risk indices (LBGI, HBGI, ADRR), to turn clinical 'lability' into objective, reproducible "
+"criteria. Although poor control was common —two of every three "
 "patients had high variability or insufficient time in range— only 3.5% met the full profile that would "
 "justify evaluating a transplant. Moreover, impaired awareness of hypoglycemia was associated with disease "
 "duration and age rather than current glucose metrics, suggesting the decision cannot rest on recent CGM "
@@ -197,6 +199,13 @@ para("A partir del archivo crudo de CGM se calcularon, por paciente, las métric
 "(TBR <70 y <54 mg/dL) y tiempo por encima de rango (TAR >180 y >250 mg/dL). El procesamiento se realizó en "
 "flujo (streaming) sobre el archivo de 837 MB, acumulando estadísticos sin cargarlo íntegramente en memoria, "
 "lo que garantiza la reproducibilidad y la escalabilidad del pipeline (Python, pandas).")
+para("Además, a partir de la misma señal cruda se calcularon los índices de riesgo glucémico de Kovatchev "
+"[15]: el Low Blood Glucose Index (LBGI) y el High Blood Glucose Index (HBGI) —que cuantifican por separado "
+"el riesgo de hipoglucemia y de hiperglucemia mediante una transformación simétrica de la escala de glucosa— "
+"y el Average Daily Risk Range (ADRR), que resume la labilidad diaria combinando los extremos bajo y alto de "
+"cada día. Estos índices son la versión apropiada para CGM y validada del Lability Index y el HYPO score que "
+"el grupo de Edmonton (Ryan et al. [16]) empleó con glucemias capilares para evaluar la severidad de la "
+"hipoglucemia y la labilidad en la selección de candidatos a trasplante.")
 h2("3.3. Criterios de candidatura y análisis")
 para("Los criterios de la indicación de trasplante se operacionalizaron combinando los cuestionarios y las "
 "métricas de CGM: (i) hipoglucemia inadvertida (IAH), definida por la pérdida de los síntomas de alarma; "
@@ -206,7 +215,9 @@ para("Los criterios de la indicación de trasplante se operacionalizaron combina
 "El análisis incluyó estadística descriptiva, comparación entre subgrupos (prueba t de Welch), segmentación "
 "no supervisada de fenotipos glucémicos mediante estandarización, PCA y K-Means (k=3) con scikit-learn [13], "
 "y una regresión logística de la hipoglucemia inadvertida con statsmodels [14], en función de las métricas de "
-"CGM, la duración de la enfermedad y la edad.")
+"CGM, la duración de la enfermedad y la edad. Por último, se evaluó la robustez del criterio de candidatura "
+"mediante un análisis de sensibilidad que recalcula su prevalencia al variar el umbral operacional de "
+"exposición a hipoglucemia.")
 
 # ============================== 4. RESULTADOS ==============================
 h1("4. Resultados")
@@ -214,7 +225,9 @@ h2("4.1. Características de la cohorte")
 para("La cohorte (N=226) tenía una edad media de 44,0 años, una duración media de la DM1 de 23,3 años y una "
 "HbA1c basal media de 7,3%, con equilibrio por sexo (Tabla 1). Pese al buen control aparente, las métricas "
 "de CGM revelaron una carga glucémica considerable: TIR medio del 63,1%, %CV medio del 37,4% y un tiempo en "
-"hipoglucemia <54 mg/dL del 1,0% de media.")
+"hipoglucemia <54 mg/dL del 1,0% de media. Los índices de riesgo (Tabla 1) situaron a la cohorte en un LBGI "
+"medio de 1,0 —riesgo de hipoglucemia bajo, coherente con una población que excluyó la hipoglucemia severa— "
+"y un HBGI medio de 7,6, dominado por la hiperglucemia.")
 tabla_csv(TAB/"tabla1_cohorte.csv", "Tabla 1. Características clínicas y métricas de CGM de la cohorte (N=226).")
 h2("4.2. Prevalencia de los criterios de candidatura")
 para("La mayoría de la cohorte no alcanzaba los objetivos de consenso: el 71,7% presentaba un TIR "
@@ -234,7 +247,9 @@ para("El mapa de riesgo (Figura 3) evidencia una relación positiva entre la var
 "uno de buen control (mayor TIR, menor variabilidad), uno hiperglucémico (glucosa media y TAR elevados con "
 "TIR bajo) y uno lábil (alta variabilidad y mayor exposición a hipoglucemia), que concentra los perfiles de "
 "candidatura. La comparación entre el subgrupo con perfil de labilidad y el resto (Tabla 3) confirma "
-"diferencias marcadas en variabilidad y tiempo en hipoglucemia.")
+"diferencias marcadas en variabilidad y tiempo en hipoglucemia; en particular, el LBGI —índice validado de "
+"riesgo de hipoglucemia— fue significativamente mayor en el grupo de labilidad (1,4 frente a 1,0; p=0,008), "
+"lo que ancla el criterio categórico en una medida continua y validada del riesgo.")
 figura(FIG/"fig3_mapa_riesgo.png", "Figura 3. Mapa de riesgo glucémico (variabilidad %CV vs. tiempo en hipoglucemia <54 mg/dL); líneas discontinuas: umbrales de consenso.", width=12)
 tabla_csv(TAB/"tabla3_labilidad_vs_resto.csv", "Tabla 3. Comparación entre el subgrupo con perfil de labilidad y el resto de la cohorte (prueba t de Welch).")
 figura(FIG/"fig4_fenotipos_pca.png", "Figura 4. Fenotipos glucémicos identificados por K-Means (k=3) en el espacio de las dos primeras componentes principales.", width=11)
@@ -258,6 +273,23 @@ para("La regresión logística (Tabla 5) mostró que la hipoglucemia inadvertida
 "predictores —cerca de ocho eventos por variable—, el modelo se mantiene dentro de los márgenes habituales "
 "de estabilidad, aunque sus estimaciones deben leerse con la prudencia propia de una muestra acotada.")
 tabla_csv(TAB/"tabla5_logit_iah.csv", "Tabla 5. Regresión logística de la hipoglucemia inadvertida (IAH): odds ratios, p-valores clásicos y robustos (HC1) y VIF.")
+
+h2("4.5. Índices de riesgo validados y robustez de los criterios")
+para("Para anclar la definición operacional en medidas validadas, se calcularon los índices de riesgo de "
+"Kovatchev sobre la señal cruda (Figura 7). El grupo con perfil de labilidad mostró un LBGI —riesgo de "
+"hipoglucemia— significativamente mayor (p=0,008) y un ADRR más alto, mientras que su HBGI fue menor, un "
+"patrón coherente con un riesgo desplazado hacia la hipoglucemia. Cabe señalar que, calculado sobre CGM de "
+"alta frecuencia, el ADRR alcanza valores superiores a los de los cortes originales de Kovatchev —derivados "
+"de cuatro glucemias capilares por día—, por lo que estos índices se interpretan aquí de forma comparativa "
+"entre grupos y no contra umbrales absolutos.")
+para("La prevalencia de la candidatura depende, como toda operacionalización, de los umbrales elegidos. El "
+"análisis de sensibilidad (Tabla 6) muestra que, al mover el umbral de exposición a hipoglucemia del 0,5% al "
+"2% de TBR<54, la prevalencia del perfil pasa del 8,8% al 0,4%, correspondiendo el 3,5% al umbral de consenso "
+"(1%); exigir además variabilidad alta (%CV≥36%) casi no altera el resultado. Hacer explícitos estos "
+"umbrales —y poder recalcular el criterio— es parte del aporte: convierte una decisión tradicionalmente "
+"cualitativa en un procedimiento transparente y auditable.")
+figura(FIG/"fig7_indices_riesgo.png", "Figura 7. Índices de riesgo glucémico de Kovatchev (LBGI, HBGI, ADRR) según el perfil de labilidad.", width=15)
+tabla_csv(TAB/"tabla7_sensibilidad.csv", "Tabla 6. Sensibilidad de la prevalencia de candidatura al umbral operacional de hipoglucemia (TBR<54).")
 
 # ============================== 5. DISCUSIÓN ==============================
 h1("5. Discusión")
@@ -301,8 +333,9 @@ para("Se presentó un pipeline reproducible de ciencia de datos que, sobre 14,8 
 "islotes. La variabilidad glucémica alta y el tiempo en rango insuficiente son muy frecuentes, pero el "
 "perfil de labilidad severa es minoritario (3,5%), lo que respalda una selección estricta de candidatos. La "
 "hipoglucemia inadvertida se asoció a la duración de la enfermedad y a la edad más que al CGM del momento. "
-"Más allá del hallazgo clínico, el trabajo deja un procedimiento reproducible —de la señal cruda al criterio "
-"de candidatura— que puede auditarse y reutilizarse en otras cohortes, y que se plantea como apoyo a la "
+"Más allá del hallazgo clínico, el trabajo deja un procedimiento reproducible —de la señal cruda a los "
+"índices de riesgo validados y al criterio de candidatura— que puede auditarse y reutilizarse en otras "
+"cohortes, y que se plantea como apoyo a la "
 "decisión, en sintonía con el factor humano de la inteligencia artificial (Humanware 5.0): una herramienta "
 "que asiste, sin reemplazar, el juicio del profesional.", first_indent=0.5)
 para("Como líneas futuras se plantea: (i) aplicar el pipeline a cohortes con indicación real de trasplante "
@@ -328,6 +361,8 @@ refs = [
 '[12] R. W. Beck, T. D. Riddlesworth, K. Ruedy et al., "Continuous Glucose Monitoring Versus Usual Care in Patients With Type 1 Diabetes (REPLACE-BG)", Diabetes Care, vol. 40, n.º 4, pp. 538–545, 2017.',
 '[13] F. Pedregosa et al., "Scikit-learn: Machine Learning in Python", Journal of Machine Learning Research, vol. 12, pp. 2825–2830, 2011.',
 '[14] S. Seabold y J. Perktold, "Statsmodels: Econometric and statistical modeling with Python", en Proc. 9th Python in Science Conf., 2010.',
+'[15] B. P. Kovatchev, E. Otto, D. Cox, L. Gonder-Frederick y W. Clarke, "Evaluation of a New Measure of Blood Glucose Variability in Diabetes", Diabetes Care, vol. 29, n.º 11, pp. 2433–2438, 2006.',
+'[16] E. A. Ryan, T. Shandro, K. Green et al., "Assessment of the Severity of Hypoglycemia and Glycemic Lability in Type 1 Diabetic Subjects Undergoing Islet Transplantation", Diabetes, vol. 53, n.º 4, pp. 955–962, 2004.',
 ]
 for r in refs:
     p = doc.add_paragraph(); p.alignment = AL.JUSTIFY; p.paragraph_format.space_after = Pt(3)
