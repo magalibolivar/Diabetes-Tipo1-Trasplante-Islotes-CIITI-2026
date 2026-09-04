@@ -41,11 +41,13 @@ t1 = pd.DataFrame({
     "Característica": ["Edad (años)", "Sexo femenino, n (%)", "Edad al diagnóstico (años)",
         "Duración de la DM1 (años)", "IMC (kg/m²)", "HbA1c basal (%)",
         "Glucosa media CGM (mg/dL)", "GMI (%)", "Coef. de variación %CV (%)",
-        "Tiempo en rango 70–180 (%)", "Tiempo <70 mg/dL (%)", "Tiempo <54 mg/dL (%)"],
+        "Tiempo en rango 70–180 (%)", "Tiempo <70 mg/dL (%)", "Tiempo <54 mg/dL (%)",
+        "LBGI (riesgo de hipoglucemia)", "HBGI (riesgo de hiperglucemia)", "ADRR (rango de riesgo diario)"],
     "Valor": [resumen("edad"), f"{(df.sexo=='F').sum()} ({100*(df.sexo=='F').mean():.1f}%)",
         resumen("edad_diagnostico"), resumen("duracion_dm1"), resumen("imc"), resumen("hba1c_basal"),
         resumen("glucosa_media",0), resumen("gmi_pct",1), resumen("cv_pct"),
-        resumen("tir_70_180_pct"), resumen("tbr_70_pct",2), resumen("tbr_54_pct",2)],
+        resumen("tir_70_180_pct"), resumen("tbr_70_pct",2), resumen("tbr_54_pct",2),
+        resumen("lbgi",2), resumen("hbgi",1), resumen("adrr",1)],
 })
 t1.to_csv(TAB/"tabla1_cohorte.csv", index=False, encoding="utf-8")
 
@@ -120,7 +122,8 @@ def pval(col):
     a = df[df.perfil_labilidad][col].dropna(); b = df[~df.perfil_labilidad][col].dropna()
     return stats.ttest_ind(a, b, equal_var=False).pvalue
 comp_vars = [("cv_pct","%CV (%)"),("tbr_54_pct","TBR<54 (%)"),("tbr_70_pct","TBR<70 (%)"),
-             ("tir_70_180_pct","TIR (%)"),("gmi_pct","GMI (%)"),("hba1c_basal","HbA1c (%)"),
+             ("tir_70_180_pct","TIR (%)"),("lbgi","LBGI"),("hbgi","HBGI"),("adrr","ADRR"),
+             ("gmi_pct","GMI (%)"),("hba1c_basal","HbA1c (%)"),
              ("duracion_dm1","Duración DM1 (años)"),("edad","Edad (años)")]
 t3 = pd.DataFrame({
     "Variable":[v[1] for v in comp_vars],
@@ -162,9 +165,10 @@ fig.suptitle("Comparación del perfil de labilidad glucémica frente al resto de
 fig.tight_layout(); fig.savefig(FIG/"fig5_comparacion_boxplots.png", bbox_inches="tight"); plt.close(fig)
 
 # ---------- Figura 6: correlación entre métricas de CGM y criterios ----------
-CM = ["glucosa_media","cv_pct","tir_70_180_pct","tbr_70_pct","tbr_54_pct","tar_250_pct","score_riesgo"]
+CM = ["glucosa_media","cv_pct","tir_70_180_pct","tbr_70_pct","tbr_54_pct","tar_250_pct","lbgi","adrr","score_riesgo"]
 CLAB = {"glucosa_media":"Glucosa media","cv_pct":"%CV","gmi_pct":"GMI","tir_70_180_pct":"TIR",
-        "tbr_70_pct":"TBR<70","tbr_54_pct":"TBR<54","tar_250_pct":"TAR>250","score_riesgo":"Score riesgo"}
+        "tbr_70_pct":"TBR<70","tbr_54_pct":"TBR<54","tar_250_pct":"TAR>250",
+        "lbgi":"LBGI","adrr":"ADRR","score_riesgo":"Score riesgo"}
 cc = df[CM].corr().round(2).rename(index=CLAB, columns=CLAB)
 cc.to_csv(TAB/"tabla6_correlacion_cgm.csv", encoding="utf-8")
 fig, ax = plt.subplots(figsize=(7.5,6.5)); im=ax.imshow(cc.values, cmap="RdBu_r", vmin=-1, vmax=1)
@@ -178,6 +182,36 @@ fig.colorbar(im, ax=ax, shrink=0.8, label="Coeficiente de Pearson")
 ax.set_title("Correlación entre las métricas de CGM y el score de riesgo glucémico")
 fig.tight_layout(); fig.savefig(FIG/"fig6_correlacion.png", bbox_inches="tight"); plt.close(fig)
 
+# ---------- Figura 7: índices de riesgo de Kovatchev, labilidad vs resto ----------
+fig, ax = plt.subplots(1,3, figsize=(12,4))
+idx_vars = [("lbgi","LBGI"),("hbgi","HBGI"),("adrr","ADRR")]
+for k,(col,lab) in enumerate(idx_vars):
+    data=[df[~df.perfil_labilidad][col].dropna(), df[df.perfil_labilidad][col].dropna()]
+    bp=ax[k].boxplot(data, patch_artist=True, labels=["Resto","Labilidad"], widths=0.6)
+    for patch,c in zip(bp['boxes'],[AZUL,NARANJA]): patch.set_facecolor(c); patch.set_alpha(0.8)
+    for med in bp['medians']: med.set_color("black")
+    ax[k].set_ylabel(lab); ax[k].set_title(lab)
+fig.suptitle("Índices de riesgo glucémico validados (Kovatchev) según el perfil de labilidad",
+             fontweight="bold", y=1.02)
+fig.tight_layout(); fig.savefig(FIG/"fig7_indices_riesgo.png", bbox_inches="tight"); plt.close(fig)
+
+# ---------- Tabla 7: sensibilidad de la candidatura al umbral operacional de hipoglucemia ----------
+sens_rows=[]
+for thr in [0.5,1.0,1.5,2.0]:
+    base = df.iah & (df.tbr_54_pct > thr)
+    strict = base & (df.cv_pct >= 36)
+    sens_rows.append({"Umbral TBR<54 (%)": thr,
+        "Candidatos IAH+hipo (n)": int(base.sum()),
+        "Prevalencia (%)": round(100*base.mean(),1),
+        "+ exige %CV≥36 (n)": int(strict.sum()),
+        "Prevalencia estricta (%)": round(100*strict.mean(),1)})
+t7 = pd.DataFrame(sens_rows)
+t7.to_csv(TAB/"tabla7_sensibilidad.csv", index=False, encoding="utf-8")
+
+print("\n=== Índices de riesgo (labilidad vs resto) ===")
+for col,lab in idx_vars:
+    print(f"  {lab}: labilidad {df[df.perfil_labilidad][col].mean():.2f} vs resto {df[~df.perfil_labilidad][col].mean():.2f}")
+print("\n=== Sensibilidad de la candidatura al umbral ===\n"+t7.to_string(index=False))
 print("\n=== Prevalencia criterios ==="); print(t2.to_string(index=False))
 print(f"\n=== Fenotipos (K-Means) ===\n{prof.to_string()}")
 print(f"\n=== Logit IAH pseudo-R2={logit.prsquared:.3f} | LLR p={logit.llr_pvalue:.4f} | "

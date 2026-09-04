@@ -69,7 +69,7 @@ def main():
 
     cols = ["PtID", "edad", "sexo", "edad_diagnostico", "duracion_dm1", "imc", "hba1c_basal",
             "TrtGroup", "cgm_n", "glucosa_media", "cv_pct", "gmi_pct", "tir_70_180_pct",
-            "tbr_70_pct", "tbr_54_pct", "tar_180_pct", "tar_250_pct",
+            "tbr_70_pct", "tbr_54_pct", "tar_180_pct", "tar_250_pct", "lbgi", "hbgi", "adrr",
             "LowBGSympCat", "iah", "percep_reducida", "variabilidad_alta", "hipo_excesiva",
             "tir_insuficiente", "perfil_labilidad", "score_riesgo"]
     df = df[cols].sort_values("PtID")

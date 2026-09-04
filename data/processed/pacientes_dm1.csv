@@ -1,227 +1,227 @@
-PtID,edad,sexo,edad_diagnostico,duracion_dm1,imc,hba1c_basal,TrtGroup,cgm_n,glucosa_media,cv_pct,gmi_pct,tir_70_180_pct,tbr_70_pct,tbr_54_pct,tar_180_pct,tar_250_pct,LowBGSympCat,iah,percep_reducida,variabilidad_alta,hipo_excesiva,tir_insuficiente,perfil_labilidad,score_riesgo
-10,63,F,60,3,24.7,5.5,CGM Only,65479,97.5,21.2,5.64,96.9,2.44,0.09,0.6,0.0,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-101,27,M,13,14,22.4,5.9,CGM+BGM,75838,129.9,34.9,6.42,81.1,5.19,0.76,13.7,1.4,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-102,64,M,27,37,27.3,7.3,CGM Only,76156,174.0,32.9,7.47,57.5,0.57,0.1,41.9,10.6,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-103,57,M,24,33,25.5,6.6,CGM Only,66769,171.0,38.0,7.4,58.8,2.2,0.55,39.0,12.4,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
-105,42,F,5,37,23.5,8.1,CGM Only,72299,194.3,36.7,7.96,42.8,1.99,0.61,55.2,20.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-106,51,M,16,35,27.6,6.2,CGM+BGM,69621,155.5,41.1,7.03,64.7,4.74,1.15,30.6,8.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-108,55,M,36,19,26.4,6.5,CGM Only,64927,153.2,27.7,6.98,75.7,0.65,0.04,23.7,2.2,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-109,78,F,58,20,21.5,8.1,CGM Only,71995,152.9,37.9,6.97,69.4,3.2,0.59,27.4,6.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-11,43,F,24,19,21.8,6.7,CGM Only,60414,139.5,40.8,6.65,70.0,8.31,2.6,21.7,4.3,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-110,36,M,15,21,31.2,7.0,CGM Only,65325,195.3,36.4,7.98,43.7,1.09,0.21,55.2,21.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-111,48,F,30,18,32.2,7.6,CGM Only,83944,184.3,37.5,7.72,51.9,0.7,0.07,47.4,17.1,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
-112,64,F,16,48,23.7,6.9,CGM+BGM,55100,139.1,36.1,6.64,74.2,5.79,1.56,20.0,2.5,Sometimes have symptoms when blood sugar is low,True,True,True,True,False,True,3
-113,69,F,56,13,28.7,7.6,CGM+BGM,69812,162.7,40.6,7.2,60.9,4.18,0.85,34.9,10.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-115,53,M,28,25,25.3,7.3,CGM Only,60937,148.0,44.1,6.85,64.1,8.6,2.5,27.3,7.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-116,66,M,40,26,31.4,7.1,CGM Only,71960,143.6,34.9,6.74,77.4,1.95,0.25,20.7,3.5,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
-118,24,M,20,4,22.2,6.9,CGM Only,51314,150.8,48.7,6.92,62.2,8.69,2.7,29.1,10.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-119,39,M,19,20,27.8,6.8,CGM+BGM,69518,147.2,45.0,6.83,63.5,9.24,3.63,27.3,7.9,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-121,25,F,8,17,30.8,6.8,CGM Only,61077,146.1,41.4,6.81,67.9,6.71,1.79,25.4,6.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-123,59,M,47,12,23.1,7.1,CGM+BGM,72888,176.1,39.6,7.52,52.6,3.41,0.94,44.0,14.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-124,50,M,32,18,23.5,7.0,CGM+BGM,68955,151.0,36.4,6.92,68.6,4.33,1.2,27.0,5.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-127,27,M,18,9,21.2,6.9,CGM Only,75417,129.7,39.5,6.41,77.7,6.83,1.2,15.5,2.8,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-128,59,F,18,41,21.4,7.4,CGM+BGM,45700,163.3,34.3,7.22,61.7,2.61,0.38,35.7,7.2,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
-129,34,F,21,13,32.0,7.1,CGM Only,71461,185.8,32.1,7.76,50.7,0.71,0.19,48.6,13.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-130,47,M,36,11,24.4,7.3,CGM Only,79483,180.2,28.9,7.62,55.1,0.1,0.01,44.8,10.1,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
-131,41,M,23,18,28.1,8.4,CGM Only,59467,163.6,35.0,7.22,63.0,1.53,0.25,35.5,8.2,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-132,43,F,3,40,37.9,8.0,CGM Only,62390,181.8,44.1,7.66,53.0,3.42,1.09,43.6,19.4,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
-134,30,F,5,25,26.5,8.2,CGM Only,70675,224.1,20.6,8.67,17.6,0.0,0.0,82.4,29.2,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-135,60,F,28,32,22.5,6.9,CGM Only,73334,158.6,35.5,7.1,68.7,1.54,0.29,29.8,7.0,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
-136,37,M,10,27,30.2,7.9,CGM Only,70950,173.2,40.5,7.45,54.7,3.54,0.82,41.8,14.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-137,44,F,25,19,29.1,7.7,CGM Only,76928,185.0,41.6,7.73,50.8,2.34,0.47,46.8,19.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-138,36,M,5,31,31.7,6.5,CGM Only,72274,147.9,42.9,6.85,64.4,8.82,3.97,26.8,6.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-139,61,M,20,41,27.7,7.4,CGM Only,72999,130.4,37.1,6.43,77.3,7.93,1.65,14.7,2.0,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-14,48,F,11,37,29.3,6.6,CGM Only,70383,164.3,41.2,7.24,58.7,5.09,1.55,36.2,11.7,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-140,30,F,4,26,27.2,5.8,CGM Only,62589,142.7,37.2,6.72,74.5,4.27,0.69,21.2,4.0,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
-141,26,F,10,16,22.7,7.1,CGM+BGM,67489,156.4,35.9,7.05,65.8,3.28,0.56,30.9,6.4,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-143,54,M,24,30,25.1,8.3,CGM+BGM,66018,193.6,35.7,7.94,43.7,1.56,0.3,54.8,20.3,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-145,30,M,1,29,27.6,8.1,CGM+BGM,60598,198.3,43.1,8.05,41.2,4.16,1.13,54.6,26.2,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-146,53,F,23,30,34.7,7.8,CGM Only,72176,179.2,30.5,7.6,50.7,0.99,0.07,48.3,10.1,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
-147,31,M,16,15,27.7,7.7,CGM+BGM,62917,175.8,45.4,7.52,51.2,5.81,1.35,43.0,18.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-148,41,F,19,22,27.8,7.6,CGM+BGM,61687,193.6,44.2,7.94,40.6,6.11,2.57,53.3,25.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-149,27,F,9,18,22.4,7.1,CGM Only,64735,161.4,39.2,7.17,59.1,4.93,1.44,36.0,9.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-15,49,M,11,38,22.1,7.0,CGM+BGM,61819,110.8,33.1,5.96,85.1,10.32,2.53,4.6,0.3,Always have symptoms when blood sugar is low,False,False,False,True,False,False,1
-152,32,M,10,22,19.8,6.8,CGM+BGM,61688,147.9,34.7,6.85,73.4,2.53,0.4,24.1,4.0,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-155,53,F,28,25,21.3,6.6,CGM+BGM,85488,148.0,39.4,6.85,65.3,7.33,2.35,27.4,5.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-156,49,M,42,7,26.5,6.8,CGM Only,69268,145.9,24.2,6.8,83.2,0.22,0.01,16.6,0.6,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-157,36,F,11,25,18.7,5.8,CGM+BGM,57509,128.7,37.5,6.39,78.5,7.47,1.64,14.0,1.9,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-158,43,M,37,6,22.9,5.9,CGM+BGM,69589,124.5,31.4,6.29,86.4,4.41,0.76,9.2,0.6,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-16,55,M,16,39,25.2,6.6,CGM Only,67577,129.1,33.9,6.4,82.3,5.43,0.98,12.3,1.2,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
-160,58,F,6,52,28.6,7.6,CGM Only,63896,154.6,44.4,7.01,59.5,8.55,2.77,32.0,10.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-162,19,F,11,8,26.6,7.8,CGM Only,41648,195.6,42.5,7.99,43.6,3.02,0.85,53.3,25.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-163,67,F,35,32,22.6,7.0,CGM Only,64185,157.5,36.1,7.08,63.8,3.61,0.82,32.6,6.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-164,46,F,17,29,24.3,8.2,CGM+BGM,81984,183.5,42.1,7.7,50.4,3.33,0.82,46.2,19.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-165,55,M,7,48,26.8,8.3,CGM Only,68350,150.5,36.0,6.91,71.1,2.96,0.65,25.9,5.3,Always have symptoms when blood sugar is low,True,True,True,False,False,False,2
-166,56,M,22,34,27.1,7.0,CGM+BGM,72568,164.5,40.1,7.24,57.4,4.7,1.3,37.9,10.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-167,30,F,18,12,26.1,6.3,CGM+BGM,46599,189.4,44.9,7.84,48.7,3.76,1.22,47.6,24.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-168,49,F,12,37,21.7,7.3,CGM Only,60733,160.3,33.2,7.14,66.9,1.42,0.28,31.7,6.2,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-169,30,F,9,21,24.0,7.5,CGM+BGM,56748,157.5,38.6,7.08,61.9,5.05,1.67,33.0,7.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-17,68,F,37,31,31.2,8.4,CGM+BGM,73292,142.9,40.8,6.73,74.8,2.68,0.54,22.5,5.9,Sometimes have symptoms when blood sugar is low,False,True,True,False,False,False,1
-170,40,M,19,21,27.2,7.8,CGM Only,62933,149.3,45.2,6.88,59.0,10.74,4.35,30.2,7.7,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-171,47,M,16,31,27.3,6.9,CGM+BGM,60788,142.0,36.1,6.71,73.0,4.88,1.24,22.1,2.8,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-172,27,F,25,2,27.4,6.5,CGM Only,62370,146.3,35.9,6.81,73.5,2.52,0.31,24.0,4.1,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-173,36,M,31,5,21.6,7.0,CGM Only,67037,172.2,36.6,7.43,59.1,1.49,0.28,39.4,12.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-174,54,M,18,36,24.4,8.0,CGM Only,62171,165.7,35.1,7.27,63.1,1.52,0.22,35.4,9.0,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
-175,34,F,20,14,29.3,8.1,CGM Only,69204,176.3,43.1,7.53,52.9,4.64,1.42,42.5,17.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-176,55,M,26,29,30.2,8.4,CGM Only,65944,167.4,44.3,7.31,56.9,4.8,1.03,38.3,14.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-177,42,F,29,13,27.7,7.5,CGM Only,51708,152.5,39.9,6.96,68.0,4.2,0.67,27.8,6.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-179,59,F,52,7,28.4,6.8,CGM+BGM,64702,165.2,43.1,7.26,61.9,3.32,0.49,34.8,11.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-18,52,F,22,30,25.3,8.0,CGM Only,68081,177.7,44.5,7.56,50.6,5.84,2.09,43.6,18.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-181,42,M,9,33,24.2,5.7,CGM Only,58251,150.5,37.6,6.91,68.6,3.79,0.87,27.6,5.6,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
-183,60,F,57,3,21.4,6.9,CGM Only,63476,132.1,32.1,6.47,81.9,4.07,0.53,14.1,0.7,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
-184,50,M,32,18,22.9,6.9,CGM+BGM,71918,151.2,33.1,6.93,72.2,1.7,0.13,26.1,3.6,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
-185,44,M,9,35,36.0,7.2,CGM+BGM,69529,168.9,30.1,7.35,59.0,0.96,0.13,40.0,6.1,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-186,20,M,2,18,24.2,8.9,CGM Only,42614,259.7,36.8,9.52,20.2,2.05,0.92,77.8,52.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-187,39,M,29,10,23.8,7.3,CGM Only,74043,167.1,38.8,7.31,58.8,3.33,0.65,37.8,10.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-188,68,M,31,37,34.9,7.8,CGM Only,69542,157.3,33.9,7.07,67.9,1.27,0.2,30.9,5.5,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
-189,25,F,5,20,35.6,7.7,CGM Only,69696,151.6,41.5,6.94,66.9,5.34,0.97,27.8,7.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-19,61,M,26,35,30.2,7.0,CGM Only,58477,166.3,45.8,7.29,59.8,4.76,1.44,35.5,14.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-190,25,F,0,25,28.1,6.8,CGM Only,64890,233.8,37.5,8.9,27.8,1.69,0.51,70.5,42.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-193,36,F,20,16,39.7,7.1,CGM Only,89850,168.6,40.9,7.34,59.8,3.18,0.74,37.0,13.2,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-197,30,M,16,14,25.2,7.5,CGM+BGM,65515,136.0,38.3,6.56,76.0,5.62,0.96,18.4,3.2,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
-198,46,F,21,25,42.6,7.6,CGM+BGM,72444,167.7,32.9,7.32,63.5,0.88,0.1,35.6,8.2,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-2,29,M,26,3,28.7,7.5,CGM Only,67537,126.9,37.5,6.35,81.7,4.98,0.31,13.3,2.1,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
-20,75,M,38,37,24.1,6.1,CGM Only,57624,132.0,32.4,6.47,83.9,3.77,0.52,12.4,1.1,Sometimes have symptoms when blood sugar is low,True,True,False,False,False,False,1
-200,27,F,8,19,32.0,7.1,CGM Only,63657,154.6,40.4,7.01,65.5,5.12,1.48,29.4,8.4,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-201,38,F,21,17,28.7,7.8,CGM Only,71373,171.9,41.8,7.42,52.9,5.1,1.7,42.0,14.2,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
-203,40,F,36,4,26.3,7.5,CGM+BGM,71629,155.8,38.3,7.04,64.7,4.3,0.88,31.1,7.2,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
-204,54,M,8,46,25.8,6.7,CGM Only,59057,148.2,35.6,6.85,70.8,4.17,0.86,25.0,3.8,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-205,57,F,22,35,28.0,6.9,CGM+BGM,73378,157.4,37.5,7.08,64.2,3.95,0.84,31.8,7.3,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
-206,29,F,8,21,30.8,7.8,CGM+BGM,67927,130.0,38.1,6.42,80.3,6.54,1.46,13.1,2.7,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-209,43,M,29,14,26.0,7.6,CGM Only,48195,166.8,29.8,7.3,63.3,0.91,0.17,35.8,5.7,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-21,59,F,16,43,31.5,6.6,CGM Only,51366,148.5,32.7,6.86,73.5,2.53,0.35,24.0,3.0,Sometimes have symptoms when blood sugar is low,True,True,False,False,False,False,1
-210,29,F,4,25,24.6,7.1,CGM+BGM,63083,150.4,43.3,6.91,63.2,7.7,2.25,29.1,8.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-211,26,F,11,15,26.1,8.4,CGM+BGM,64982,125.9,40.3,6.32,80.0,7.45,1.89,12.5,2.8,Sometimes have symptoms when blood sugar is low,True,True,True,True,False,True,3
-213,67,F,50,17,21.4,6.8,CGM+BGM,65807,149.7,34.0,6.89,73.7,1.72,0.22,24.6,3.9,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-214,27,F,6,21,22.7,8.0,CGM Only,73053,167.6,35.3,7.32,59.6,2.09,0.4,38.3,8.8,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-215,60,F,51,9,33.0,8.0,CGM Only,66781,167.1,36.4,7.31,60.0,2.15,0.34,37.9,9.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-216,55,M,47,8,25.9,8.1,CGM+BGM,69671,152.6,37.5,6.96,65.4,4.44,1.02,30.1,5.8,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
-217,71,M,7,64,21.7,6.9,CGM Only,61611,131.1,33.1,6.45,84.2,2.95,0.44,12.8,1.6,Sometimes have symptoms when blood sugar is low,True,True,False,False,False,False,1
-218,40,M,26,14,23.5,7.3,CGM Only,70021,187.5,36.1,7.79,47.9,1.11,0.15,51.0,17.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-219,27,F,9,18,24.8,7.5,CGM Only,70176,159.3,38.7,7.12,60.0,5.45,1.55,34.5,8.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-22,34,F,7,27,26.7,7.9,CGM Only,68591,200.7,44.4,8.11,40.9,4.52,0.99,54.6,29.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-220,66,F,61,5,27.1,6.8,CGM Only,74784,145.4,32.1,6.79,80.8,0.64,0.07,18.6,3.4,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
-221,25,F,20,5,24.7,6.8,CGM+BGM,59852,160.7,41.9,7.16,62.4,4.26,1.19,33.3,10.6,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-222,56,M,43,13,33.6,7.7,CGM Only,62123,148.8,30.0,6.87,76.7,1.42,0.09,21.9,2.5,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-223,39,M,21,18,33.8,7.0,CGM Only,19065,173.3,31.3,7.46,59.3,0.49,0.09,40.2,7.4,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-224,67,M,9,58,28.2,8.6,CGM+BGM,67374,175.0,30.0,7.5,56.3,0.8,0.15,42.9,8.2,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
-226,55,F,21,34,32.9,7.6,CGM Only,56334,172.7,46.0,7.44,51.4,7.13,2.29,41.5,17.4,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-227,51,M,34,17,30.4,6.8,CGM Only,80273,163.7,34.3,7.23,63.8,1.56,0.26,34.7,7.5,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-228,44,F,15,29,19.1,6.7,CGM+BGM,81666,134.0,37.0,6.51,77.3,6.85,2.01,15.8,2.5,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-229,40,M,17,23,36.0,6.0,CGM Only,87138,140.4,42.9,6.67,69.6,7.89,2.73,22.5,5.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-23,40,F,13,27,35.3,5.7,CGM Only,79132,116.3,36.4,6.09,83.4,8.87,2.26,7.8,1.0,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-231,38,F,6,32,23.4,6.2,CGM+BGM,67348,132.5,37.1,6.48,77.2,6.64,1.42,16.2,2.1,Sometimes have symptoms when blood sugar is low,True,True,True,True,False,True,3
-232,26,F,10,16,26.0,8.3,CGM+BGM,78650,150.1,39.5,6.9,66.1,5.7,1.51,28.2,5.9,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-233,36,F,30,6,23.1,6.6,CGM+BGM,63788,119.1,41.8,6.16,73.8,13.96,3.78,12.3,1.7,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-234,42,F,25,17,21.1,8.2,CGM Only,69042,179.9,35.4,7.61,52.9,1.5,0.24,45.6,13.4,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-235,30,M,12,18,33.1,8.0,CGM Only,62268,165.5,48.9,7.27,52.5,9.49,3.24,38.0,16.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-236,68,M,9,59,26.5,8.3,CGM Only,68001,173.9,43.5,7.47,56.3,3.7,0.94,40.0,15.7,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
-239,37,F,11,26,36.5,8.6,CGM+BGM,63470,214.1,34.5,8.43,34.6,0.72,0.2,64.7,30.4,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-24,39,M,31,8,27.5,7.4,CGM Only,68692,167.4,40.0,7.31,56.3,4.42,1.27,39.3,11.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-240,68,F,38,30,23.1,7.0,CGM+BGM,74732,146.4,38.0,6.81,73.8,3.6,1.21,22.6,5.1,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-241,51,F,32,19,22.5,7.8,CGM+BGM,66030,168.8,35.3,7.35,59.8,1.8,0.21,38.4,10.1,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
-243,44,M,5,39,28.6,6.0,CGM Only,74583,137.0,38.6,6.59,73.6,7.0,1.75,19.4,3.3,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-244,30,F,5,25,22.1,8.8,CGM Only,54877,169.8,43.8,7.37,53.8,6.22,2.38,40.0,15.2,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
-245,54,F,17,37,26.4,7.8,CGM+BGM,86069,189.9,46.3,7.85,48.1,4.0,0.98,47.9,24.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-246,25,M,11,14,19.7,8.0,CGM Only,60070,161.6,42.4,7.18,60.0,5.5,1.51,34.5,11.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-247,51,F,47,4,30.4,7.5,CGM Only,68851,162.4,36.0,7.19,65.1,1.45,0.15,33.5,8.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-248,35,F,14,21,29.3,7.9,CGM+BGM,57490,176.9,42.2,7.54,52.2,4.18,1.4,43.6,16.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-249,32,M,25,7,25.7,6.4,CGM+BGM,41127,163.2,39.9,7.21,61.2,3.45,0.62,35.3,10.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-250,56,M,27,29,27.8,7.9,CGM Only,74812,168.2,37.0,7.33,61.1,1.67,0.3,37.2,11.1,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
-251,52,M,8,44,24.7,5.2,CGM Only,84653,114.7,33.9,6.05,86.4,7.59,0.99,6.0,0.6,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-252,46,M,6,40,32.6,6.5,CGM Only,54098,126.4,39.1,6.33,80.6,7.66,1.5,11.7,2.7,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-253,25,M,1,24,25.7,6.2,CGM Only,73765,137.6,34.7,6.6,79.4,3.86,0.75,16.8,2.4,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-254,33,F,28,5,24.6,7.3,CGM Only,56223,173.9,36.3,7.47,55.1,2.26,0.51,42.6,12.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-256,42,M,18,24,19.6,6.8,CGM+BGM,55968,148.4,40.8,6.86,70.3,4.66,1.1,25.1,6.6,Sometimes have symptoms when blood sugar is low,False,True,True,True,False,False,2
-257,34,M,28,6,27.5,7.4,CGM Only,60096,155.9,33.5,7.04,68.0,2.2,0.39,29.8,4.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-258,38,F,34,4,27.5,7.4,CGM Only,69133,149.7,30.4,6.89,75.0,0.72,0.04,24.3,2.5,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-26,66,F,13,53,22.8,7.5,CGM+BGM,68101,162.6,34.6,7.2,64.2,1.8,0.31,34.0,7.6,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-260,29,F,26,3,24.6,7.3,CGM+BGM,63368,155.1,39.7,7.02,65.4,4.24,1.08,30.3,7.6,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-263,44,M,15,29,33.5,7.0,CGM Only,94089,165.2,36.1,7.26,60.5,2.4,0.42,37.1,9.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-264,26,F,4,22,20.5,6.8,CGM Only,45431,179.5,43.9,7.6,49.9,5.28,1.64,44.8,18.9,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-265,39,M,19,20,37.9,6.5,CGM+BGM,71166,140.6,29.7,6.67,81.7,2.14,0.25,16.2,1.2,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-266,39,F,6,33,21.6,6.3,CGM Only,25383,146.1,29.2,6.8,78.6,1.69,0.19,19.7,1.3,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-267,30,M,12,18,27.8,5.5,CGM Only,68390,142.7,43.8,6.72,65.4,9.99,3.55,24.6,6.2,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-269,74,M,42,32,32.8,7.5,CGM Only,75300,189.6,36.4,7.85,46.0,1.86,0.56,52.1,18.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-27,30,M,6,24,31.0,8.0,CGM+BGM,67950,142.0,40.7,6.71,69.5,7.62,2.04,22.9,4.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-271,56,F,19,37,38.8,7.0,CGM+BGM,79501,161.3,32.8,7.17,66.9,1.56,0.35,31.6,5.7,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
-272,64,M,50,14,22.8,7.4,CGM+BGM,66659,150.5,26.3,6.91,78.7,0.28,0.02,21.0,1.6,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-273,47,M,19,28,24.1,7.8,CGM+BGM,69450,170.3,36.3,7.38,57.4,1.87,0.17,40.8,10.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-274,50,M,27,23,34.2,7.5,CGM Only,71081,164.6,33.3,7.25,65.4,0.54,0.07,34.0,7.5,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-275,40,F,8,32,33.4,8.2,CGM Only,65105,171.4,36.7,7.41,56.8,2.0,0.35,41.2,11.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-276,58,M,12,46,23.8,6.7,CGM Only,66929,127.0,29.6,6.35,87.7,3.57,0.67,8.7,0.6,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
-277,65,M,27,38,28.3,8.0,CGM+BGM,88479,170.4,33.9,7.39,60.3,1.08,0.19,38.6,9.4,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
-278,63,F,30,33,25.9,7.2,CGM Only,71060,167.3,38.3,7.31,58.2,3.23,0.86,38.6,11.1,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
-280,31,F,11,20,33.7,6.9,CGM Only,59554,160.0,40.9,7.14,60.4,5.14,1.47,34.5,9.4,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
-281,28,F,16,12,24.5,7.7,CGM Only,67796,180.5,36.8,7.63,50.2,1.92,0.31,47.9,14.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-283,72,M,42,30,28.3,6.5,CGM Only,71156,147.3,33.0,6.83,74.6,1.74,0.15,23.7,2.9,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-284,26,F,14,12,23.1,7.9,CGM Only,56220,164.1,35.3,7.24,65.7,0.84,0.12,33.5,9.0,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-285,58,F,48,10,27.6,7.8,CGM Only,63104,168.2,36.8,7.33,59.9,2.03,0.34,38.0,10.8,Sometimes have symptoms when blood sugar is low,False,True,True,False,True,False,2
-287,50,F,10,40,22.0,7.2,CGM Only,64949,173.7,37.6,7.46,55.6,2.65,0.7,41.8,13.3,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-288,44,M,16,28,25.8,7.6,CGM Only,65580,184.2,39.8,7.72,48.1,2.97,0.88,48.9,18.6,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
-289,30,M,5,25,31.8,8.5,CGM+BGM,16274,198.0,42.7,8.05,40.8,3.88,1.17,55.4,25.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-29,35,F,14,21,27.8,8.1,CGM+BGM,65379,187.1,40.4,7.79,48.7,2.84,0.9,48.5,20.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-290,39,M,22,17,27.6,6.5,CGM+BGM,64433,164.6,41.3,7.25,63.2,2.7,0.43,34.1,11.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-291,25,F,10,15,27.5,6.9,CGM Only,62254,156.5,36.6,7.05,64.6,3.57,0.84,31.8,6.3,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-292,49,F,3,46,22.2,7.1,CGM+BGM,60980,142.0,36.7,6.71,75.5,3.66,0.71,20.8,3.7,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
-293,35,F,7,28,22.3,7.8,CGM+BGM,60450,176.6,33.0,7.53,54.9,0.51,0.06,44.6,11.2,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
-3,27,M,12,15,21.8,7.8,CGM Only,71770,165.7,38.8,7.27,58.0,4.03,0.99,37.9,10.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-30,63,M,35,28,26.2,6.5,CGM Only,63347,150.3,42.8,6.91,62.4,7.75,2.8,29.9,7.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-31,49,M,31,18,31.0,6.8,CGM Only,68478,157.1,41.3,7.07,61.4,5.33,1.04,33.3,9.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-32,35,F,8,27,25.0,7.4,CGM Only,69616,158.9,39.3,7.11,62.2,4.47,1.13,33.3,8.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-33,34,M,19,15,31.6,7.9,CGM Only,70889,162.5,45.5,7.2,54.7,8.28,2.96,37.0,12.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-35,56,M,9,47,28.6,8.8,CGM Only,61802,166.2,37.0,7.29,61.1,2.29,0.56,36.6,10.2,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-36,54,M,28,26,32.0,7.3,CGM Only,66076,149.7,37.3,6.89,70.1,3.71,0.93,26.2,5.3,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
-37,37,M,24,13,28.1,6.9,CGM Only,70754,158.6,42.4,7.1,60.8,5.65,1.72,33.5,10.4,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-38,50,M,29,21,22.4,6.6,CGM Only,64838,123.0,33.8,6.25,85.3,5.74,0.92,8.9,1.2,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-39,31,F,17,14,29.8,6.4,CGM Only,32316,160.1,34.6,7.14,65.3,2.13,0.45,32.6,6.9,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
-40,31,M,21,10,42.7,6.9,CGM+BGM,62634,159.4,34.9,7.12,67.0,1.09,0.17,31.9,6.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-41,52,M,22,30,28.8,8.2,CGM+BGM,61902,189.7,37.4,7.85,50.3,0.5,0.07,49.2,19.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-42,50,F,11,39,26.0,7.2,CGM+BGM,56847,155.6,37.1,7.03,66.0,4.05,0.89,29.9,6.3,Sometimes have symptoms when blood sugar is low,False,True,True,False,True,False,2
-43,55,M,32,23,25.5,6.9,CGM+BGM,61275,147.5,39.2,6.84,70.1,4.85,1.12,25.0,5.8,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-45,34,M,13,21,23.6,8.2,CGM Only,62045,169.0,43.3,7.35,54.5,5.48,1.4,40.0,15.5,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-46,31,M,8,23,30.2,7.7,CGM Only,71022,168.7,39.2,7.34,57.5,3.71,1.2,38.8,11.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-47,47,M,25,22,27.3,7.4,CGM Only,70309,154.8,33.4,7.01,72.1,1.22,0.18,26.7,5.1,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-48,25,M,23,2,34.2,7.3,CGM Only,67255,148.3,41.4,6.86,65.5,6.79,1.9,27.7,6.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-49,27,M,9,18,33.8,7.0,CGM Only,63747,160.0,38.8,7.14,66.0,2.57,0.53,31.5,8.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-5,61,M,13,48,26.6,6.4,CGM+BGM,53747,148.5,34.7,6.86,73.1,3.2,0.56,23.7,4.1,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
-50,26,F,2,24,24.1,6.7,CGM+BGM,61580,150.5,39.0,6.91,66.5,5.54,1.65,28.0,6.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-52,27,M,14,13,30.4,8.2,CGM Only,27161,162.6,48.6,7.2,49.2,12.24,6.5,38.6,14.6,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-53,39,F,10,29,33.5,8.4,CGM Only,70022,192.8,34.7,7.92,44.4,1.14,0.23,54.5,20.3,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-54,53,M,43,10,26.9,8.0,CGM Only,71166,179.6,39.7,7.61,51.8,2.94,0.57,45.2,15.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-55,60,F,36,24,21.2,7.0,CGM+BGM,53276,134.1,32.4,6.52,82.6,4.11,0.91,13.3,1.2,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-57,26,M,10,16,28.8,7.9,CGM Only,64000,165.7,40.7,7.27,60.1,3.5,0.95,36.4,12.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-58,31,F,17,14,28.5,8.2,CGM Only,69144,175.6,33.7,7.51,56.8,0.59,0.08,42.7,11.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-60,61,M,35,26,27.3,7.4,CGM Only,67079,131.1,38.8,6.45,75.6,8.16,1.87,16.2,2.6,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-61,60,M,40,20,29.4,8.2,CGM+BGM,70146,163.6,40.8,7.22,60.1,3.62,0.69,36.3,11.2,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-62,43,M,25,18,25.7,7.9,CGM Only,57387,182.7,38.4,7.68,49.1,2.46,0.49,48.5,16.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-64,30,F,12,18,23.5,7.1,CGM Only,66404,185.1,40.5,7.74,48.5,2.87,0.83,48.6,20.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-65,57,M,36,21,24.8,6.8,CGM Only,72303,159.3,38.3,7.12,65.8,3.21,0.68,31.0,8.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-67,30,M,11,19,32.7,7.4,CGM+BGM,75930,186.8,35.4,7.78,48.5,1.35,0.31,50.2,16.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-68,25,M,12,13,33.4,7.5,CGM Only,79758,192.1,41.0,7.9,45.6,3.02,1.09,51.4,22.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-69,52,M,6,46,30.4,7.5,CGM Only,54104,172.9,32.5,7.45,57.3,1.35,0.16,41.3,9.4,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-7,36,F,12,24,23.4,7.5,CGM Only,77957,165.6,38.8,7.27,56.4,4.52,1.09,39.1,10.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-70,44,F,12,32,23.5,7.3,CGM Only,76194,169.8,42.0,7.37,52.9,5.93,2.45,41.2,13.9,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
-71,36,F,16,20,28.2,6.7,CGM Only,65897,154.4,40.1,7.0,67.9,3.55,0.79,28.6,7.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-72,65,F,59,6,23.0,6.5,CGM Only,62530,159.3,30.6,7.12,71.6,0.28,0.05,28.1,5.3,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-73,46,F,7,39,29.9,7.5,CGM Only,54489,179.1,31.3,7.59,53.1,0.92,0.19,46.0,10.1,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
-74,57,F,32,25,25.8,7.3,CGM Only,70064,142.3,37.3,6.71,72.6,5.73,1.57,21.7,3.4,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
-76,28,F,1,27,32.4,7.5,CGM Only,72431,173.4,36.7,7.46,58.7,0.97,0.15,40.3,12.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-77,56,M,17,39,23.8,6.5,CGM+BGM,91653,168.3,34.5,7.34,61.0,1.33,0.2,37.6,8.7,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-78,48,M,33,15,28.0,6.9,CGM+BGM,55582,162.1,36.2,7.19,62.7,3.27,0.95,34.0,8.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-79,26,F,11,15,27.7,5.9,CGM Only,68648,122.4,35.8,6.24,81.8,7.73,1.8,10.5,0.9,Always have symptoms when blood sugar is low,False,False,False,True,False,False,1
-8,48,F,7,41,21.6,6.7,CGM+BGM,51344,158.8,40.7,7.11,64.9,3.62,0.72,31.5,9.8,Sometimes have symptoms when blood sugar is low,False,True,True,False,True,False,2
-80,74,M,34,40,29.5,8.0,CGM Only,49754,195.3,32.8,7.98,42.9,0.7,0.08,56.4,20.8,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
-81,53,M,36,17,24.9,6.3,CGM Only,71874,149.2,38.6,6.88,68.5,4.71,0.86,26.8,5.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-82,37,F,5,32,35.1,7.2,CGM+BGM,62313,180.3,40.3,7.62,49.7,3.95,1.36,46.4,17.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
-86,22,F,18,4,26.4,7.0,CGM Only,55540,155.0,35.0,7.02,69.7,2.38,0.49,27.9,5.8,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
-87,51,F,22,29,27.7,7.4,CGM Only,64943,156.9,36.6,7.06,68.2,2.27,0.46,29.6,7.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-89,29,F,12,17,33.5,7.4,CGM Only,58588,157.9,27.1,7.09,74.0,0.27,0.04,25.8,3.2,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
-9,27,F,15,12,25.8,7.3,CGM+BGM,71337,154.5,30.7,7.01,70.9,1.75,0.13,27.4,3.3,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-90,34,F,7,27,26.0,7.4,CGM Only,63566,160.4,34.0,7.15,63.1,2.83,0.65,34.1,6.1,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
-91,49,M,45,4,24.3,6.2,CGM Only,57322,126.3,30.0,6.33,89.9,1.4,0.06,8.7,1.0,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
-93,54,M,46,8,25.6,7.7,CGM Only,66412,148.3,35.7,6.86,70.2,4.2,0.97,25.6,3.7,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
-95,35,M,22,13,30.3,7.0,CGM Only,78145,145.0,35.0,6.78,73.7,3.58,0.75,22.7,3.3,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
-96,36,F,14,22,32.4,7.8,CGM Only,61756,170.7,38.6,7.39,57.8,2.93,0.62,39.3,11.8,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
-97,20,F,9,11,26.2,8.4,CGM Only,62939,201.3,42.1,8.12,41.8,2.78,0.75,55.4,27.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
-98,62,M,37,25,25.0,6.7,CGM+BGM,61239,174.3,29.6,7.48,55.8,0.77,0.11,43.4,7.0,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
+PtID,edad,sexo,edad_diagnostico,duracion_dm1,imc,hba1c_basal,TrtGroup,cgm_n,glucosa_media,cv_pct,gmi_pct,tir_70_180_pct,tbr_70_pct,tbr_54_pct,tar_180_pct,tar_250_pct,lbgi,hbgi,adrr,LowBGSympCat,iah,percep_reducida,variabilidad_alta,hipo_excesiva,tir_insuficiente,perfil_labilidad,score_riesgo
+10,63,F,60,3,24.7,5.5,CGM Only,65479,97.5,21.2,5.64,96.9,2.44,0.09,0.6,0.0,1.97,0.25,14.5,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+101,27,M,13,14,22.4,5.9,CGM+BGM,75838,129.9,34.9,6.42,81.1,5.19,0.76,13.7,1.4,1.41,3.02,31.9,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+102,64,M,27,37,27.3,7.3,CGM Only,76156,174.0,32.9,7.47,57.5,0.57,0.1,41.9,10.6,0.24,8.83,39.0,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+103,57,M,24,33,25.5,6.6,CGM Only,66769,171.0,38.0,7.4,58.8,2.2,0.55,39.0,12.4,0.63,8.91,45.5,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
+105,42,F,5,37,23.5,8.1,CGM Only,72299,194.3,36.7,7.96,42.8,1.99,0.61,55.2,20.9,0.54,12.95,51.2,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+106,51,M,16,35,27.6,6.2,CGM+BGM,69621,155.5,41.1,7.03,64.7,4.74,1.15,30.6,8.8,1.21,6.92,50.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+108,55,M,36,19,26.4,6.5,CGM Only,64927,153.2,27.7,6.98,75.7,0.65,0.04,23.7,2.2,0.27,5.04,23.7,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+109,78,F,58,20,21.5,8.1,CGM Only,71995,152.9,37.9,6.97,69.4,3.2,0.59,27.4,6.6,0.91,6.14,41.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+11,43,F,24,19,21.8,6.7,CGM Only,60414,139.5,40.8,6.65,70.0,8.31,2.6,21.7,4.3,2.04,4.73,47.1,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+110,36,M,15,21,31.2,7.0,CGM Only,65325,195.3,36.4,7.98,43.7,1.09,0.21,55.2,21.5,0.35,13.09,40.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+111,48,F,30,18,32.2,7.6,CGM Only,83944,184.3,37.5,7.72,51.9,0.7,0.07,47.4,17.1,0.32,11.14,48.0,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
+112,64,F,16,48,23.7,6.9,CGM+BGM,55100,139.1,36.1,6.64,74.2,5.79,1.56,20.0,2.5,1.46,4.19,40.7,Sometimes have symptoms when blood sugar is low,True,True,True,True,False,True,3
+113,69,F,56,13,28.7,7.6,CGM+BGM,69812,162.7,40.6,7.2,60.9,4.18,0.85,34.9,10.6,1.03,7.96,48.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+115,53,M,28,25,25.3,7.3,CGM Only,60937,148.0,44.1,6.85,64.1,8.6,2.5,27.3,7.7,1.97,6.22,51.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+116,66,M,40,26,31.4,7.1,CGM Only,71960,143.6,34.9,6.74,77.4,1.95,0.25,20.7,3.5,0.71,4.52,32.2,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
+118,24,M,20,4,22.2,6.9,CGM Only,51314,150.8,48.7,6.92,62.2,8.69,2.7,29.1,10.3,2.11,7.13,53.2,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+119,39,M,19,20,27.8,6.8,CGM+BGM,69518,147.2,45.0,6.83,63.5,9.24,3.63,27.3,7.9,2.32,6.23,52.7,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+121,25,F,8,17,30.8,6.8,CGM Only,61077,146.1,41.4,6.81,67.9,6.71,1.79,25.4,6.1,1.63,5.64,44.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+123,59,M,47,12,23.1,7.1,CGM+BGM,72888,176.1,39.6,7.52,52.6,3.41,0.94,44.0,14.8,0.88,10.07,50.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+124,50,M,32,18,23.5,7.0,CGM+BGM,68955,151.0,36.4,6.92,68.6,4.33,1.2,27.0,5.1,1.12,5.74,42.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+127,27,M,18,9,21.2,6.9,CGM Only,75417,129.7,39.5,6.41,77.7,6.83,1.2,15.5,2.8,1.77,3.46,36.9,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+128,59,F,18,41,21.4,7.4,CGM+BGM,45700,163.3,34.3,7.22,61.7,2.61,0.38,35.7,7.2,0.65,7.33,40.7,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
+129,34,F,21,13,32.0,7.1,CGM Only,71461,185.8,32.1,7.76,50.7,0.71,0.19,48.6,13.9,0.22,10.69,42.7,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+130,47,M,36,11,24.4,7.3,CGM Only,79483,180.2,28.9,7.62,55.1,0.1,0.01,44.8,10.1,0.09,9.34,32.8,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
+131,41,M,23,18,28.1,8.4,CGM Only,59467,163.6,35.0,7.22,63.0,1.53,0.25,35.5,8.2,0.52,7.43,40.3,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+132,43,F,3,40,37.9,8.0,CGM Only,62390,181.8,44.1,7.66,53.0,3.42,1.09,43.6,19.4,0.93,11.51,50.4,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
+134,30,F,5,25,26.5,8.2,CGM Only,70675,224.1,20.6,8.67,17.6,0.0,0.0,82.4,29.2,0.01,17.3,35.7,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+135,60,F,28,32,22.5,6.9,CGM Only,73334,158.6,35.5,7.1,68.7,1.54,0.29,29.8,7.0,0.52,6.62,34.5,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
+136,37,M,10,27,30.2,7.9,CGM Only,70950,173.2,40.5,7.45,54.7,3.54,0.82,41.8,14.0,0.89,9.66,54.3,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+137,44,F,25,19,29.1,7.7,CGM Only,76928,185.0,41.6,7.73,50.8,2.34,0.47,46.8,19.5,0.66,11.8,52.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+138,36,M,5,31,31.7,6.5,CGM Only,72274,147.9,42.9,6.85,64.4,8.82,3.97,26.8,6.8,2.29,6.04,51.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+139,61,M,20,41,27.7,7.4,CGM Only,72999,130.4,37.1,6.43,77.3,7.93,1.65,14.7,2.0,1.87,3.27,38.1,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+14,48,F,11,37,29.3,6.6,CGM Only,70383,164.3,41.2,7.24,58.7,5.09,1.55,36.2,11.7,1.24,8.31,47.1,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+140,30,F,4,26,27.2,5.8,CGM Only,62589,142.7,37.2,6.72,74.5,4.27,0.69,21.2,4.0,1.16,4.71,40.6,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
+141,26,F,10,16,22.7,7.1,CGM+BGM,67489,156.4,35.9,7.05,65.8,3.28,0.56,30.9,6.4,0.85,6.49,40.1,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+143,54,M,24,30,25.1,8.3,CGM+BGM,66018,193.6,35.7,7.94,43.7,1.56,0.3,54.8,20.3,0.42,12.73,45.7,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+145,30,M,1,29,27.6,8.1,CGM+BGM,60598,198.3,43.1,8.05,41.2,4.16,1.13,54.6,26.2,0.98,14.6,51.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+146,53,F,23,30,34.7,7.8,CGM Only,72176,179.2,30.5,7.6,50.7,0.99,0.07,48.3,10.1,0.3,9.55,36.1,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
+147,31,M,16,15,27.7,7.7,CGM+BGM,62917,175.8,45.4,7.52,51.2,5.81,1.35,43.0,18.7,1.34,10.85,50.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+148,41,F,19,22,27.8,7.6,CGM+BGM,61687,193.6,44.2,7.94,40.6,6.11,2.57,53.3,25.6,1.52,13.99,66.2,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+149,27,F,9,18,22.4,7.1,CGM Only,64735,161.4,39.2,7.17,59.1,4.93,1.44,36.0,9.1,1.24,7.67,47.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+15,49,M,11,38,22.1,7.0,CGM+BGM,61819,110.8,33.1,5.96,85.1,10.32,2.53,4.6,0.3,2.6,1.27,30.2,Always have symptoms when blood sugar is low,False,False,False,True,False,False,1
+152,32,M,10,22,19.8,6.8,CGM+BGM,61688,147.9,34.7,6.85,73.4,2.53,0.4,24.1,4.0,0.78,5.11,37.8,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+155,53,F,28,25,21.3,6.6,CGM+BGM,85488,148.0,39.4,6.85,65.3,7.33,2.35,27.4,5.3,1.73,5.72,45.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+156,49,M,42,7,26.5,6.8,CGM Only,69268,145.9,24.2,6.8,83.2,0.22,0.01,16.6,0.6,0.17,3.73,17.9,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+157,36,F,11,25,18.7,5.8,CGM+BGM,57509,128.7,37.5,6.39,78.5,7.47,1.64,14.0,1.9,1.83,3.12,38.9,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+158,43,M,37,6,22.9,5.9,CGM+BGM,69589,124.5,31.4,6.29,86.4,4.41,0.76,9.2,0.6,1.29,2.18,28.6,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+16,55,M,16,39,25.2,6.6,CGM Only,67577,129.1,33.9,6.4,82.3,5.43,0.98,12.3,1.2,1.44,2.84,33.1,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
+160,58,F,6,52,28.6,7.6,CGM Only,63896,154.6,44.4,7.01,59.5,8.55,2.77,32.0,10.0,2.0,7.27,53.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+162,19,F,11,8,26.6,7.8,CGM Only,41648,195.6,42.5,7.99,43.6,3.02,0.85,53.3,25.0,0.8,13.96,53.3,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+163,67,F,35,32,22.6,7.0,CGM Only,64185,157.5,36.1,7.08,63.8,3.61,0.82,32.6,6.4,0.92,6.7,40.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+164,46,F,17,29,24.3,8.2,CGM+BGM,81984,183.5,42.1,7.7,50.4,3.33,0.82,46.2,19.4,0.85,11.65,55.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+165,55,M,7,48,26.8,8.3,CGM Only,68350,150.5,36.0,6.91,71.1,2.96,0.65,25.9,5.3,0.86,5.59,37.9,Always have symptoms when blood sugar is low,True,True,True,False,False,False,2
+166,56,M,22,34,27.1,7.0,CGM+BGM,72568,164.5,40.1,7.24,57.4,4.7,1.3,37.9,10.6,1.16,8.26,50.4,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+167,30,F,18,12,26.1,6.3,CGM+BGM,46599,189.4,44.9,7.84,48.7,3.76,1.22,47.6,24.1,1.0,13.09,52.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+168,49,F,12,37,21.7,7.3,CGM Only,60733,160.3,33.2,7.14,66.9,1.42,0.28,31.7,6.2,0.46,6.65,38.4,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+169,30,F,9,21,24.0,7.5,CGM+BGM,56748,157.5,38.6,7.08,61.9,5.05,1.67,33.0,7.8,1.29,7.0,48.4,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+17,68,F,37,31,31.2,8.4,CGM+BGM,73292,142.9,40.8,6.73,74.8,2.68,0.54,22.5,5.9,0.99,5.1,46.0,Sometimes have symptoms when blood sugar is low,False,True,True,False,False,False,1
+170,40,M,19,21,27.2,7.8,CGM Only,62933,149.3,45.2,6.88,59.0,10.74,4.35,30.2,7.7,2.57,6.63,55.1,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+171,47,M,16,31,27.3,6.9,CGM+BGM,60788,142.0,36.1,6.71,73.0,4.88,1.24,22.1,2.8,1.27,4.53,39.5,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+172,27,F,25,2,27.4,6.5,CGM Only,62370,146.3,35.9,6.81,73.5,2.52,0.31,24.0,4.1,0.82,5.04,41.1,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+173,36,M,31,5,21.6,7.0,CGM Only,67037,172.2,36.6,7.43,59.1,1.49,0.28,39.4,12.0,0.45,8.93,41.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+174,54,M,18,36,24.4,8.0,CGM Only,62171,165.7,35.1,7.27,63.1,1.52,0.22,35.4,9.0,0.47,7.71,38.3,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
+175,34,F,20,14,29.3,8.1,CGM Only,69204,176.3,43.1,7.53,52.9,4.64,1.42,42.5,17.5,1.11,10.53,54.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+176,55,M,26,29,30.2,8.4,CGM Only,65944,167.4,44.3,7.31,56.9,4.8,1.03,38.3,14.6,1.22,9.23,52.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+177,42,F,29,13,27.7,7.5,CGM Only,51708,152.5,39.9,6.96,68.0,4.2,0.67,27.8,6.4,1.07,6.26,38.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+179,59,F,52,7,28.4,6.8,CGM+BGM,64702,165.2,43.1,7.26,61.9,3.32,0.49,34.8,11.5,0.86,8.5,41.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+18,52,F,22,30,25.3,8.0,CGM Only,68081,177.7,44.5,7.56,50.6,5.84,2.09,43.6,18.7,1.42,11.0,54.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+181,42,M,9,33,24.2,5.7,CGM Only,58251,150.5,37.6,6.91,68.6,3.79,0.87,27.6,5.6,1.08,5.83,39.8,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
+183,60,F,57,3,21.4,6.9,CGM Only,63476,132.1,32.1,6.47,81.9,4.07,0.53,14.1,0.7,1.15,3.0,33.8,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
+184,50,M,32,18,22.9,6.9,CGM+BGM,71918,151.2,33.1,6.93,72.2,1.7,0.13,26.1,3.6,0.57,5.37,33.1,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
+185,44,M,9,35,36.0,7.2,CGM+BGM,69529,168.9,30.1,7.35,59.0,0.96,0.13,40.0,6.1,0.33,7.75,31.6,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+186,20,M,2,18,24.2,8.9,CGM Only,42614,259.7,36.8,9.52,20.2,2.05,0.92,77.8,52.7,0.51,26.55,60.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+187,39,M,29,10,23.8,7.3,CGM Only,74043,167.1,38.8,7.31,58.8,3.33,0.65,37.8,10.7,0.85,8.44,45.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+188,68,M,31,37,34.9,7.8,CGM Only,69542,157.3,33.9,7.07,67.9,1.27,0.2,30.9,5.5,0.49,6.33,28.4,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
+189,25,F,5,20,35.6,7.7,CGM Only,69696,151.6,41.5,6.94,66.9,5.34,0.97,27.8,7.6,1.27,6.37,43.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+19,61,M,26,35,30.2,7.0,CGM Only,58477,166.3,45.8,7.29,59.8,4.76,1.44,35.5,14.5,1.24,9.1,57.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+190,25,F,0,25,28.1,6.8,CGM Only,64890,233.8,37.5,8.9,27.8,1.69,0.51,70.5,42.4,0.45,21.06,55.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+193,36,F,20,16,39.7,7.1,CGM Only,89850,168.6,40.9,7.34,59.8,3.18,0.74,37.0,13.2,0.85,8.88,42.3,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+197,30,M,16,14,25.2,7.5,CGM+BGM,65515,136.0,38.3,6.56,76.0,5.62,0.96,18.4,3.2,1.43,4.01,43.8,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
+198,46,F,21,25,42.6,7.6,CGM+BGM,72444,167.7,32.9,7.32,63.5,0.88,0.1,35.6,8.2,0.3,7.7,36.5,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+2,29,M,26,3,28.7,7.5,CGM Only,67537,126.9,37.5,6.35,81.7,4.98,0.31,13.3,2.1,1.48,2.97,28.0,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
+20,75,M,38,37,24.1,6.1,CGM Only,57624,132.0,32.4,6.47,83.9,3.77,0.52,12.4,1.1,1.12,2.96,29.9,Sometimes have symptoms when blood sugar is low,True,True,False,False,False,False,1
+200,27,F,8,19,32.0,7.1,CGM Only,63657,154.6,40.4,7.01,65.5,5.12,1.48,29.4,8.4,1.28,6.69,43.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+201,38,F,21,17,28.7,7.8,CGM Only,71373,171.9,41.8,7.42,52.9,5.1,1.7,42.0,14.2,1.25,9.67,52.7,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
+203,40,F,36,4,26.3,7.5,CGM+BGM,71629,155.8,38.3,7.04,64.7,4.3,0.88,31.1,7.2,1.11,6.67,41.9,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
+204,54,M,8,46,25.8,6.7,CGM Only,59057,148.2,35.6,6.85,70.8,4.17,0.86,25.0,3.8,1.05,5.25,39.2,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+205,57,F,22,35,28.0,6.9,CGM+BGM,73378,157.4,37.5,7.08,64.2,3.95,0.84,31.8,7.3,1.01,6.81,43.6,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
+206,29,F,8,21,30.8,7.8,CGM+BGM,67927,130.0,38.1,6.42,80.3,6.54,1.46,13.1,2.7,1.68,3.26,40.5,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+209,43,M,29,14,26.0,7.6,CGM Only,48195,166.8,29.8,7.3,63.3,0.91,0.17,35.8,5.7,0.3,7.3,32.0,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+21,59,F,16,43,31.5,6.6,CGM Only,51366,148.5,32.7,6.86,73.5,2.53,0.35,24.0,3.0,0.74,5.01,32.0,Sometimes have symptoms when blood sugar is low,True,True,False,False,False,False,1
+210,29,F,4,25,24.6,7.1,CGM+BGM,63083,150.4,43.3,6.91,63.2,7.7,2.25,29.1,8.0,1.81,6.48,49.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+211,26,F,11,15,26.1,8.4,CGM+BGM,64982,125.9,40.3,6.32,80.0,7.45,1.89,12.5,2.8,1.99,3.05,38.4,Sometimes have symptoms when blood sugar is low,True,True,True,True,False,True,3
+213,67,F,50,17,21.4,6.8,CGM+BGM,65807,149.7,34.0,6.89,73.7,1.72,0.22,24.6,3.9,0.6,5.23,32.9,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+214,27,F,6,21,22.7,8.0,CGM Only,73053,167.6,35.3,7.32,59.6,2.09,0.4,38.3,8.8,0.58,8.09,41.4,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+215,60,F,51,9,33.0,8.0,CGM Only,66781,167.1,36.4,7.31,60.0,2.15,0.34,37.9,9.6,0.59,8.14,39.2,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+216,55,M,47,8,25.9,8.1,CGM+BGM,69671,152.6,37.5,6.96,65.4,4.44,1.02,30.1,5.8,1.12,6.15,41.7,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
+217,71,M,7,64,21.7,6.9,CGM Only,61611,131.1,33.1,6.45,84.2,2.95,0.44,12.8,1.6,1.01,2.94,29.5,Sometimes have symptoms when blood sugar is low,True,True,False,False,False,False,1
+218,40,M,26,14,23.5,7.3,CGM Only,70021,187.5,36.1,7.79,47.9,1.11,0.15,51.0,17.9,0.36,11.64,45.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+219,27,F,9,18,24.8,7.5,CGM Only,70176,159.3,38.7,7.12,60.0,5.45,1.55,34.5,8.1,1.33,7.3,45.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+22,34,F,7,27,26.7,7.9,CGM Only,68591,200.7,44.4,8.11,40.9,4.52,0.99,54.6,29.4,1.01,15.34,62.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+220,66,F,61,5,27.1,6.8,CGM Only,74784,145.4,32.1,6.79,80.8,0.64,0.07,18.6,3.4,0.36,4.35,31.2,Always have symptoms when blood sugar is low,True,True,False,False,False,False,1
+221,25,F,20,5,24.7,6.8,CGM+BGM,59852,160.7,41.9,7.16,62.4,4.26,1.19,33.3,10.6,1.14,7.78,46.6,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+222,56,M,43,13,33.6,7.7,CGM Only,62123,148.8,30.0,6.87,76.7,1.42,0.09,21.9,2.5,0.49,4.7,24.8,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+223,39,M,21,18,33.8,7.0,CGM Only,19065,173.3,31.3,7.46,59.3,0.49,0.09,40.2,7.4,0.17,8.33,30.5,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+224,67,M,9,58,28.2,8.6,CGM+BGM,67374,175.0,30.0,7.5,56.3,0.8,0.15,42.9,8.2,0.25,8.65,33.9,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
+226,55,F,21,34,32.9,7.6,CGM Only,56334,172.7,46.0,7.44,51.4,7.13,2.29,41.5,17.4,1.65,10.38,61.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+227,51,M,34,17,30.4,6.8,CGM Only,80273,163.7,34.3,7.23,63.8,1.56,0.26,34.7,7.5,0.49,7.32,37.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+228,44,F,15,29,19.1,6.7,CGM+BGM,81666,134.0,37.0,6.51,77.3,6.85,2.01,15.8,2.5,1.72,3.6,36.8,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+229,40,M,17,23,36.0,6.0,CGM Only,87138,140.4,42.9,6.67,69.6,7.89,2.73,22.5,5.7,2.03,5.05,42.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+23,40,F,13,27,35.3,5.7,CGM Only,79132,116.3,36.4,6.09,83.4,8.87,2.26,7.8,1.0,2.36,1.9,33.7,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+231,38,F,6,32,23.4,6.2,CGM+BGM,67348,132.5,37.1,6.48,77.2,6.64,1.42,16.2,2.1,1.68,3.5,43.0,Sometimes have symptoms when blood sugar is low,True,True,True,True,False,True,3
+232,26,F,10,16,26.0,8.3,CGM+BGM,78650,150.1,39.5,6.9,66.1,5.7,1.51,28.2,5.9,1.41,5.99,47.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+233,36,F,30,6,23.1,6.6,CGM+BGM,63788,119.1,41.8,6.16,73.8,13.96,3.78,12.3,1.7,3.16,2.66,44.2,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+234,42,F,25,17,21.1,8.2,CGM Only,69042,179.9,35.4,7.61,52.9,1.5,0.24,45.6,13.4,0.43,10.12,41.8,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+235,30,M,12,18,33.1,8.0,CGM Only,62268,165.5,48.9,7.27,52.5,9.49,3.24,38.0,16.0,2.19,9.6,61.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+236,68,M,9,59,26.5,8.3,CGM Only,68001,173.9,43.5,7.47,56.3,3.7,0.94,40.0,15.7,0.94,10.05,49.1,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
+239,37,F,11,26,36.5,8.6,CGM+BGM,63470,214.1,34.5,8.43,34.6,0.72,0.2,64.7,30.4,0.22,16.5,49.1,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+24,39,M,31,8,27.5,7.4,CGM Only,68692,167.4,40.0,7.31,56.3,4.42,1.27,39.3,11.5,1.12,8.7,47.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+240,68,F,38,30,23.1,7.0,CGM+BGM,74732,146.4,38.0,6.81,73.8,3.6,1.21,22.6,5.1,1.09,5.18,34.0,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+241,51,F,32,19,22.5,7.8,CGM+BGM,66030,168.8,35.3,7.35,59.8,1.8,0.21,38.4,10.1,0.5,8.29,43.3,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
+243,44,M,5,39,28.6,6.0,CGM Only,74583,137.0,38.6,6.59,73.6,7.0,1.75,19.4,3.3,1.74,4.2,46.2,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+244,30,F,5,25,22.1,8.8,CGM Only,54877,169.8,43.8,7.37,53.8,6.22,2.38,40.0,15.2,1.54,9.59,53.8,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
+245,54,F,17,37,26.4,7.8,CGM+BGM,86069,189.9,46.3,7.85,48.1,4.0,0.98,47.9,24.1,0.98,13.36,52.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+246,25,M,11,14,19.7,8.0,CGM Only,60070,161.6,42.4,7.18,60.0,5.5,1.51,34.5,11.5,1.31,8.05,51.9,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+247,51,F,47,4,30.4,7.5,CGM Only,68851,162.4,36.0,7.19,65.1,1.45,0.15,33.5,8.4,0.51,7.33,36.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+248,35,F,14,21,29.3,7.9,CGM+BGM,57490,176.9,42.2,7.54,52.2,4.18,1.4,43.6,16.7,1.07,10.52,52.1,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+249,32,M,25,7,25.7,6.4,CGM+BGM,41127,163.2,39.9,7.21,61.2,3.45,0.62,35.3,10.8,0.9,7.96,43.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+250,56,M,27,29,27.8,7.9,CGM Only,74812,168.2,37.0,7.33,61.1,1.67,0.3,37.2,11.1,0.53,8.35,43.2,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
+251,52,M,8,44,24.7,5.2,CGM Only,84653,114.7,33.9,6.05,86.4,7.59,0.99,6.0,0.6,2.06,1.62,29.5,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+252,46,M,6,40,32.6,6.5,CGM Only,54098,126.4,39.1,6.33,80.6,7.66,1.5,11.7,2.7,1.91,3.0,35.3,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+253,25,M,1,24,25.7,6.2,CGM Only,73765,137.6,34.7,6.6,79.4,3.86,0.75,16.8,2.4,1.08,3.78,32.9,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+254,33,F,28,5,24.6,7.3,CGM Only,56223,173.9,36.3,7.47,55.1,2.26,0.51,42.6,12.1,0.63,9.3,41.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+256,42,M,18,24,19.6,6.8,CGM+BGM,55968,148.4,40.8,6.86,70.3,4.66,1.1,25.1,6.6,1.22,5.79,43.0,Sometimes have symptoms when blood sugar is low,False,True,True,True,False,False,2
+257,34,M,28,6,27.5,7.4,CGM Only,60096,155.9,33.5,7.04,68.0,2.2,0.39,29.8,4.9,0.66,6.1,35.0,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+258,38,F,34,4,27.5,7.4,CGM Only,69133,149.7,30.4,6.89,75.0,0.72,0.04,24.3,2.5,0.38,4.89,23.0,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+26,66,F,13,53,22.8,7.5,CGM+BGM,68101,162.6,34.6,7.2,64.2,1.8,0.31,34.0,7.6,0.53,7.21,37.0,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+260,29,F,26,3,24.6,7.3,CGM+BGM,63368,155.1,39.7,7.02,65.4,4.24,1.08,30.3,7.6,1.13,6.67,41.6,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+263,44,M,15,29,33.5,7.0,CGM Only,94089,165.2,36.1,7.26,60.5,2.4,0.42,37.1,9.1,0.66,7.84,39.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+264,26,F,4,22,20.5,6.8,CGM Only,45431,179.5,43.9,7.6,49.9,5.28,1.64,44.8,18.9,1.26,11.26,57.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+265,39,M,19,20,37.9,6.5,CGM+BGM,71166,140.6,29.7,6.67,81.7,2.14,0.25,16.2,1.2,0.69,3.65,24.6,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+266,39,F,6,33,21.6,6.3,CGM Only,25383,146.1,29.2,6.8,78.6,1.69,0.19,19.7,1.3,0.56,4.29,28.5,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+267,30,M,12,18,27.8,5.5,CGM Only,68390,142.7,43.8,6.72,65.4,9.99,3.55,24.6,6.2,2.37,5.5,54.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+269,74,M,42,32,32.8,7.5,CGM Only,75300,189.6,36.4,7.85,46.0,1.86,0.56,52.1,18.0,0.5,12.0,47.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+27,30,M,6,24,31.0,8.0,CGM+BGM,67950,142.0,40.7,6.71,69.5,7.62,2.04,22.9,4.8,1.79,5.01,48.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+271,56,F,19,37,38.8,7.0,CGM+BGM,79501,161.3,32.8,7.17,66.9,1.56,0.35,31.6,5.7,0.47,6.72,34.6,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
+272,64,M,50,14,22.8,7.4,CGM+BGM,66659,150.5,26.3,6.91,78.7,0.28,0.02,21.0,1.6,0.22,4.52,23.4,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+273,47,M,19,28,24.1,7.8,CGM+BGM,69450,170.3,36.3,7.38,57.4,1.87,0.17,40.8,10.5,0.55,8.69,38.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+274,50,M,27,23,34.2,7.5,CGM Only,71081,164.6,33.3,7.25,65.4,0.54,0.07,34.0,7.5,0.27,7.26,33.7,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+275,40,F,8,32,33.4,8.2,CGM Only,65105,171.4,36.7,7.41,56.8,2.0,0.35,41.2,11.6,0.6,8.93,45.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+276,58,M,12,46,23.8,6.7,CGM Only,66929,127.0,29.6,6.35,87.7,3.57,0.67,8.7,0.6,1.06,2.22,29.6,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
+277,65,M,27,38,28.3,8.0,CGM+BGM,88479,170.4,33.9,7.39,60.3,1.08,0.19,38.6,9.4,0.37,8.31,38.1,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
+278,63,F,30,33,25.9,7.2,CGM Only,71060,167.3,38.3,7.31,58.2,3.23,0.86,38.6,11.1,0.85,8.45,45.9,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
+280,31,F,11,20,33.7,6.9,CGM Only,59554,160.0,40.9,7.14,60.4,5.14,1.47,34.5,9.4,1.29,7.62,47.4,Always have symptoms when blood sugar is low,True,True,True,True,True,True,4
+281,28,F,16,12,24.5,7.7,CGM Only,67796,180.5,36.8,7.63,50.2,1.92,0.31,47.9,14.8,0.55,10.51,47.6,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+283,72,M,42,30,28.3,6.5,CGM Only,71156,147.3,33.0,6.83,74.6,1.74,0.15,23.7,2.9,0.63,4.87,31.1,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+284,26,F,14,12,23.1,7.9,CGM Only,56220,164.1,35.3,7.24,65.7,0.84,0.12,33.5,9.0,0.36,7.44,33.3,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+285,58,F,48,10,27.6,7.8,CGM Only,63104,168.2,36.8,7.33,59.9,2.03,0.34,38.0,10.8,0.6,8.37,44.0,Sometimes have symptoms when blood sugar is low,False,True,True,False,True,False,2
+287,50,F,10,40,22.0,7.2,CGM Only,64949,173.7,37.6,7.46,55.6,2.65,0.7,41.8,13.3,0.71,9.37,45.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+288,44,M,16,28,25.8,7.6,CGM Only,65580,184.2,39.8,7.72,48.1,2.97,0.88,48.9,18.6,0.8,11.55,54.7,Sometimes have symptoms when blood sugar is low,True,True,True,False,True,False,3
+289,30,M,5,25,31.8,8.5,CGM+BGM,16274,198.0,42.7,8.05,40.8,3.88,1.17,55.4,25.8,0.96,14.53,56.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+29,35,F,14,21,27.8,8.1,CGM+BGM,65379,187.1,40.4,7.79,48.7,2.84,0.9,48.5,20.0,0.76,12.05,55.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+290,39,M,22,17,27.6,6.5,CGM+BGM,64433,164.6,41.3,7.25,63.2,2.7,0.43,34.1,11.7,0.76,8.22,46.3,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+291,25,F,10,15,27.5,6.9,CGM Only,62254,156.5,36.6,7.05,64.6,3.57,0.84,31.8,6.3,0.94,6.58,43.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+292,49,F,3,46,22.2,7.1,CGM+BGM,60980,142.0,36.7,6.71,75.5,3.66,0.71,20.8,3.7,1.06,4.55,40.8,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
+293,35,F,7,28,22.3,7.8,CGM+BGM,60450,176.6,33.0,7.53,54.9,0.51,0.06,44.6,11.2,0.27,9.31,40.0,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
+3,27,M,12,15,21.8,7.8,CGM Only,71770,165.7,38.8,7.27,58.0,4.03,0.99,37.9,10.0,0.99,8.26,47.4,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+30,63,M,35,28,26.2,6.5,CGM Only,63347,150.3,42.8,6.91,62.4,7.75,2.8,29.9,7.6,1.93,6.48,48.3,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+31,49,M,31,18,31.0,6.8,CGM Only,68478,157.1,41.3,7.07,61.4,5.33,1.04,33.3,9.3,1.28,7.27,43.0,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+32,35,F,8,27,25.0,7.4,CGM Only,69616,158.9,39.3,7.11,62.2,4.47,1.13,33.3,8.8,1.11,7.25,45.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+33,34,M,19,15,31.6,7.9,CGM Only,70889,162.5,45.5,7.2,54.7,8.28,2.96,37.0,12.6,1.96,8.66,54.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+35,56,M,9,47,28.6,8.8,CGM Only,61802,166.2,37.0,7.29,61.1,2.29,0.56,36.6,10.2,0.66,8.04,41.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+36,54,M,28,26,32.0,7.3,CGM Only,66076,149.7,37.3,6.89,70.1,3.71,0.93,26.2,5.3,1.02,5.63,43.2,Always have symptoms when blood sugar is low,False,False,True,False,False,False,1
+37,37,M,24,13,28.1,6.9,CGM Only,70754,158.6,42.4,7.1,60.8,5.65,1.72,33.5,10.4,1.44,7.6,48.7,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+38,50,M,29,21,22.4,6.6,CGM Only,64838,123.0,33.8,6.25,85.3,5.74,0.92,8.9,1.2,1.55,2.24,33.3,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+39,31,F,17,14,29.8,6.4,CGM Only,32316,160.1,34.6,7.14,65.3,2.13,0.45,32.6,6.9,0.65,6.82,36.8,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
+40,31,M,21,10,42.7,6.9,CGM+BGM,62634,159.4,34.9,7.12,67.0,1.09,0.17,31.9,6.9,0.43,6.74,32.6,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+41,52,M,22,30,28.8,8.2,CGM+BGM,61902,189.7,37.4,7.85,50.3,0.5,0.07,49.2,19.1,0.23,12.0,40.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+42,50,F,11,39,26.0,7.2,CGM+BGM,56847,155.6,37.1,7.03,66.0,4.05,0.89,29.9,6.3,1.01,6.46,39.4,Sometimes have symptoms when blood sugar is low,False,True,True,False,True,False,2
+43,55,M,32,23,25.5,6.9,CGM+BGM,61275,147.5,39.2,6.84,70.1,4.85,1.12,25.0,5.8,1.24,5.55,43.0,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+45,34,M,13,21,23.6,8.2,CGM Only,62045,169.0,43.3,7.35,54.5,5.48,1.4,40.0,15.5,1.31,9.45,48.8,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+46,31,M,8,23,30.2,7.7,CGM Only,71022,168.7,39.2,7.34,57.5,3.71,1.2,38.8,11.8,0.96,8.76,49.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+47,47,M,25,22,27.3,7.4,CGM Only,70309,154.8,33.4,7.01,72.1,1.22,0.18,26.7,5.1,0.47,5.85,34.2,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+48,25,M,23,2,34.2,7.3,CGM Only,67255,148.3,41.4,6.86,65.5,6.79,1.9,27.7,6.7,1.64,5.99,43.4,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+49,27,M,9,18,33.8,7.0,CGM Only,63747,160.0,38.8,7.14,66.0,2.57,0.53,31.5,8.7,0.77,7.22,42.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+5,61,M,13,48,26.6,6.4,CGM+BGM,53747,148.5,34.7,6.86,73.1,3.2,0.56,23.7,4.1,0.85,5.14,35.1,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
+50,26,F,2,24,24.1,6.7,CGM+BGM,61580,150.5,39.0,6.91,66.5,5.54,1.65,28.0,6.0,1.39,5.98,49.5,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+52,27,M,14,13,30.4,8.2,CGM Only,27161,162.6,48.6,7.2,49.2,12.24,6.5,38.6,14.6,3.25,9.19,66.6,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+53,39,F,10,29,33.5,8.4,CGM Only,70022,192.8,34.7,7.92,44.4,1.14,0.23,54.5,20.3,0.36,12.47,43.6,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+54,53,M,43,10,26.9,8.0,CGM Only,71166,179.6,39.7,7.61,51.8,2.94,0.57,45.2,15.8,0.71,10.61,45.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+55,60,F,36,24,21.2,7.0,CGM+BGM,53276,134.1,32.4,6.52,82.6,4.11,0.91,13.3,1.2,1.15,3.16,32.1,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+57,26,M,10,16,28.8,7.9,CGM Only,64000,165.7,40.7,7.27,60.1,3.5,0.95,36.4,12.0,0.95,8.44,42.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+58,31,F,17,14,28.5,8.2,CGM Only,69144,175.6,33.7,7.51,56.8,0.59,0.08,42.7,11.9,0.25,9.19,39.5,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+60,61,M,35,26,27.3,7.4,CGM Only,67079,131.1,38.8,6.45,75.6,8.16,1.87,16.2,2.6,1.95,3.54,42.7,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+61,60,M,40,20,29.4,8.2,CGM+BGM,70146,163.6,40.8,7.22,60.1,3.62,0.69,36.3,11.2,0.99,8.19,46.9,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+62,43,M,25,18,25.7,7.9,CGM Only,57387,182.7,38.4,7.68,49.1,2.46,0.49,48.5,16.9,0.65,11.11,47.1,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+64,30,F,12,18,23.5,7.1,CGM Only,66404,185.1,40.5,7.74,48.5,2.87,0.83,48.6,20.4,0.78,11.82,53.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+65,57,M,36,21,24.8,6.8,CGM Only,72303,159.3,38.3,7.12,65.8,3.21,0.68,31.0,8.0,0.84,7.04,45.2,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+67,30,M,11,19,32.7,7.4,CGM+BGM,75930,186.8,35.4,7.78,48.5,1.35,0.31,50.2,16.9,0.4,11.38,43.7,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+68,25,M,12,13,33.4,7.5,CGM Only,79758,192.1,41.0,7.9,45.6,3.02,1.09,51.4,22.6,0.79,13.06,49.9,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+69,52,M,6,46,30.4,7.5,CGM Only,54104,172.9,32.5,7.45,57.3,1.35,0.16,41.3,9.4,0.38,8.62,37.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+7,36,F,12,24,23.4,7.5,CGM Only,77957,165.6,38.8,7.27,56.4,4.52,1.09,39.1,10.8,1.09,8.33,45.8,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+70,44,F,12,32,23.5,7.3,CGM Only,76194,169.8,42.0,7.37,52.9,5.93,2.45,41.2,13.9,1.53,9.4,52.0,Sometimes have symptoms when blood sugar is low,False,True,True,True,True,False,3
+71,36,F,16,20,28.2,6.7,CGM Only,65897,154.4,40.1,7.0,67.9,3.55,0.79,28.6,7.7,0.98,6.55,45.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+72,65,F,59,6,23.0,6.5,CGM Only,62530,159.3,30.6,7.12,71.6,0.28,0.05,28.1,5.3,0.17,6.11,25.0,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+73,46,F,7,39,29.9,7.5,CGM Only,54489,179.1,31.3,7.59,53.1,0.92,0.19,46.0,10.1,0.28,9.52,38.3,Sometimes have symptoms when blood sugar is low,True,True,False,False,True,False,2
+74,57,F,32,25,25.8,7.3,CGM Only,70064,142.3,37.3,6.71,72.6,5.73,1.57,21.7,3.4,1.42,4.65,42.0,Always have symptoms when blood sugar is low,False,False,True,True,False,False,2
+76,28,F,1,27,32.4,7.5,CGM Only,72431,173.4,36.7,7.46,58.7,0.97,0.15,40.3,12.4,0.4,9.13,41.5,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+77,56,M,17,39,23.8,6.5,CGM+BGM,91653,168.3,34.5,7.34,61.0,1.33,0.2,37.6,8.7,0.4,8.04,37.9,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+78,48,M,33,15,28.0,6.9,CGM+BGM,55582,162.1,36.2,7.19,62.7,3.27,0.95,34.0,8.0,0.86,7.32,46.7,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+79,26,F,11,15,27.7,5.9,CGM Only,68648,122.4,35.8,6.24,81.8,7.73,1.8,10.5,0.9,2.0,2.38,40.5,Always have symptoms when blood sugar is low,False,False,False,True,False,False,1
+8,48,F,7,41,21.6,6.7,CGM+BGM,51344,158.8,40.7,7.11,64.9,3.62,0.72,31.5,9.8,0.97,7.33,46.1,Sometimes have symptoms when blood sugar is low,False,True,True,False,True,False,2
+80,74,M,34,40,29.5,8.0,CGM Only,49754,195.3,32.8,7.98,42.9,0.7,0.08,56.4,20.8,0.23,12.7,40.4,Always have symptoms when blood sugar is low,True,True,False,False,True,False,2
+81,53,M,36,17,24.9,6.3,CGM Only,71874,149.2,38.6,6.88,68.5,4.71,0.86,26.8,5.8,1.19,5.76,45.0,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+82,37,F,5,32,35.1,7.2,CGM+BGM,62313,180.3,40.3,7.62,49.7,3.95,1.36,46.4,17.6,1.0,10.93,58.6,Always have symptoms when blood sugar is low,False,False,True,True,True,False,3
+86,22,F,18,4,26.4,7.0,CGM Only,55540,155.0,35.0,7.02,69.7,2.38,0.49,27.9,5.8,0.67,6.08,40.5,Always have symptoms when blood sugar is low,False,False,False,False,True,False,1
+87,51,F,22,29,27.7,7.4,CGM Only,64943,156.9,36.6,7.06,68.2,2.27,0.46,29.6,7.4,0.68,6.53,35.8,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+89,29,F,12,17,33.5,7.4,CGM Only,58588,157.9,27.1,7.09,74.0,0.27,0.04,25.8,3.2,0.16,5.57,23.9,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
+9,27,F,15,12,25.8,7.3,CGM+BGM,71337,154.5,30.7,7.01,70.9,1.75,0.13,27.4,3.3,0.53,5.6,26.9,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+90,34,F,7,27,26.0,7.4,CGM Only,63566,160.4,34.0,7.15,63.1,2.83,0.65,34.1,6.1,0.74,6.86,43.2,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
+91,49,M,45,4,24.3,6.2,CGM Only,57322,126.3,30.0,6.33,89.9,1.4,0.06,8.7,1.0,0.76,2.19,24.8,Always have symptoms when blood sugar is low,False,False,False,False,False,False,0
+93,54,M,46,8,25.6,7.7,CGM Only,66412,148.3,35.7,6.86,70.2,4.2,0.97,25.6,3.7,1.07,5.28,33.2,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
+95,35,M,22,13,30.3,7.0,CGM Only,78145,145.0,35.0,6.78,73.7,3.58,0.75,22.7,3.3,1.0,4.77,37.7,Sometimes have symptoms when blood sugar is low,False,True,False,False,False,False,0
+96,36,F,14,22,32.4,7.8,CGM Only,61756,170.7,38.6,7.39,57.8,2.93,0.62,39.3,11.8,0.75,8.92,49.1,Always have symptoms when blood sugar is low,True,True,True,False,True,False,3
+97,20,F,9,11,26.2,8.4,CGM Only,62939,201.3,42.1,8.12,41.8,2.78,0.75,55.4,27.8,0.72,15.01,57.3,Always have symptoms when blood sugar is low,False,False,True,False,True,False,2
+98,62,M,37,25,25.0,6.7,CGM+BGM,61239,174.3,29.6,7.48,55.8,0.77,0.11,43.4,7.0,0.25,8.53,35.3,Sometimes have symptoms when blood sugar is low,False,True,False,False,True,False,1
