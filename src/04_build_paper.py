@@ -74,11 +74,11 @@ def tabla_csv(csv_path, caption):
     doc.add_paragraph().paragraph_format.space_after = Pt(4)
 
 # ============================== PORTADA ==============================
-para("Estratificación de candidatos a trasplante de islotes pancreáticos mediante análisis de "
-     "variabilidad glucémica en diabetes tipo 1: un enfoque de ciencia de datos sobre datos reales "
-     "de monitoreo continuo de glucosa", align=AL.CENTER, bold=True, size=14, space_after=4)
-para("Stratifying Pancreatic Islet Transplantation Candidates through Glycemic Variability Analysis in "
-     "Type 1 Diabetes: A Data Science Approach on Real-World Continuous Glucose Monitoring Data",
+para("Aprendizaje automático interpretable para la estratificación de candidatos a trasplante de islotes "
+     "en diabetes tipo 1: un sistema de apoyo a la decisión sobre datos reales de monitoreo continuo de "
+     "glucosa", align=AL.CENTER, bold=True, size=14, space_after=4)
+para("Interpretable Machine Learning for Stratifying Islet Transplantation Candidates in Type 1 Diabetes: "
+     "A Clinical Decision-Support Approach on Real-World Continuous Glucose Monitoring Data",
      align=AL.CENTER, italic=True, size=11, space_after=10)
 para("Magali Bolivar, María Florencia Rossi, Matías Montiel, Nestor Balich, Franco Balich", align=AL.CENTER, space_after=2)
 para("CAETI - Centro de Altos Estudios en Tecnología Informática", align=AL.CENTER, space_after=0)
@@ -105,10 +105,13 @@ para("El trasplante alogénico de islotes pancreáticos (Protocolo Edmonton) es 
 "completo de labilidad compatible con la indicación de trasplante. La hipoglucemia inadvertida se asoció a la "
 "duración de la DM1 y a la edad, y no a las métricas de CGM del momento. Los resultados aportan una "
 "herramienta objetiva y reproducible para priorizar candidatos y respaldan cuantitativamente que el "
-"trasplante debe reservarse para un subgrupo minoritario y bien caracterizado.")
+"trasplante debe reservarse para un subgrupo minoritario y bien caracterizado. Desde la perspectiva de la "
+"informática, el aporte central es un pipeline de ciencia de datos escalable y un sistema de aprendizaje "
+"automático interpretable que, en línea con el paradigma del factor humano de la inteligencia artificial "
+"(Humanware 5.0), no reemplaza el juicio clínico sino que lo asiste con evidencia cuantitativa y trazable.")
 runs_para([("Palabras clave: ", True, False),
-("diabetes tipo 1; trasplante de islotes; variabilidad glucémica; monitoreo continuo de glucosa; "
-"hipoglucemia inadvertida; ciencia de datos.", False, False)])
+("aprendizaje automático interpretable; sistema de apoyo a la decisión; monitoreo continuo de glucosa; "
+"diabetes tipo 1; trasplante de islotes; ciencia de datos.", False, False)])
 h1("Abstract")
 para("Allogeneic pancreatic islet transplantation (Edmonton Protocol) is a therapeutic option for type 1 "
 "diabetes (T1D), reserved for patients with severe metabolic instability and impaired awareness of "
@@ -122,10 +125,13 @@ para("Allogeneic pancreatic islet transplantation (Edmonton Protocol) is a thera
 "awareness of hypoglycemia 17.3%, yet only 3.5% met the full lability profile compatible with transplant "
 "indication. Impaired awareness was associated with T1D duration and age rather than with current CGM "
 "metrics. The results provide an objective, reproducible tool to prioritize candidates and quantitatively "
-"support reserving transplantation for a small, well-characterized subgroup.", italic=True)
+"support reserving transplantation for a small, well-characterized subgroup. From an informatics "
+"standpoint, the main contribution is a scalable data-science pipeline and an interpretable machine-learning "
+"system that, in line with the human-factor-of-AI paradigm (Humanware 5.0), assists—rather than replaces—"
+"clinical judgment with quantitative, traceable evidence.", italic=True)
 runs_para([("Keywords: ", True, True),
-("type 1 diabetes; islet transplantation; glycemic variability; continuous glucose monitoring; impaired "
-"awareness of hypoglycemia; data science.", False, True)])
+("interpretable machine learning; clinical decision support; continuous glucose monitoring; type 1 "
+"diabetes; islet transplantation; data science.", False, True)])
 
 # ============================== 1. INTRODUCCIÓN ==============================
 h1("1. Introducción")
@@ -135,12 +141,12 @@ para("La diabetes mellitus tipo 1 (DM1) se caracteriza por la destrucción autoi
 "glucémica extrema, con hipoglucemias severas recurrentes e hipoglucemia inadvertida —un síndrome de falla "
 "autonómica que eleva de forma drástica la morbimortalidad—. En este escenario, el trasplante alogénico de "
 "islotes pancreáticos ha emergido como una intervención capaz de restaurar la masa de células beta y la "
-"homeostasis glucémica (Shapiro et al., 2000; Shapiro et al., 2006).", first_indent=0.5)
+"homeostasis glucémica [1], [2].", first_indent=0.5)
 para("Sin embargo, el trasplante exige inmunosupresión crónica (habitualmente tacrolimus y sirolimus) con "
 "riesgo de nefrotoxicidad, infecciones y neoplasias, por lo que se reserva para pacientes con inestabilidad "
 "metabólica severa. Ensayos recientes con tegoprubart, un anticuerpo monoclonal anti-CD40L, muestran "
-"resultados prometedores en independencia de insulina con menor toxicidad (Paucara Saavedra, 2026; Cassola y "
-"Leal Niebla, 2026), pero no eliminan la premisa central: la relación riesgo-beneficio solo es favorable en "
+"resultados prometedores en independencia de insulina con menor toxicidad [3], [4], pero no eliminan la "
+"premisa central: la relación riesgo-beneficio solo es favorable en "
 "pacientes cuidadosamente seleccionados. Como concluye la literatura, en pacientes con buen control "
 "metabólico y baja variabilidad glucémica el procedimiento presenta más riesgos que beneficios.", first_indent=0.5)
 para("La selección de candidatos, no obstante, se apoya con frecuencia en criterios clínicos cualitativos. El "
@@ -148,20 +154,27 @@ para("La selección de candidatos, no obstante, se apoya con frecuencia en crite
 "a hipoglucemia. El objetivo de este trabajo es construir, con datos reales y un pipeline reproducible, una "
 "estratificación objetiva de candidatos a trasplante de islotes, cuantificando en una población de DM1 la "
 "prevalencia de los criterios de labilidad glucémica que definen la indicación.", first_indent=0.5)
+para("Desde la óptica de la informática, el trabajo aborda tres desafíos característicos de la ciencia de "
+"datos en salud: (i) la ingeniería de datos a gran escala —el procesamiento en flujo (streaming) de casi 15 "
+"millones de registros de sensores—; (ii) la construcción de variables clínicas interpretables a partir de "
+"señales crudas; y (iii) el uso de modelos de aprendizaje automático interpretables (segmentación no "
+"supervisada y regresión) como soporte a la decisión. Este enfoque se alinea con el paradigma del factor "
+"humano de la inteligencia artificial (Humanware 5.0): la IA no sustituye al profesional, sino que amplifica "
+"su capacidad de decidir con evidencia objetiva, trazable y reproducible.", first_indent=0.5)
 
 # ============================== 2. MARCO CONCEPTUAL ==============================
 h1("2. Marco conceptual")
 para("El Protocolo Edmonton estableció la viabilidad del trasplante de islotes con un régimen "
-"inmunosupresor libre de glucocorticoides (Shapiro et al., 2000) y fue validado en un ensayo internacional "
-"multicéntrico (Shapiro et al., 2006). Su indicación se reserva para la DM1 con hipoglucemias severas e "
-"inadvertidas y labilidad metabólica (Health Quality Ontario, 2015; Rickels y Robertson, 2019). Los ensayos "
-"de fase 3 del Clinical Islet Transplantation Consortium (Ricordi et al., 2016) y protocolos como el de la "
-"Universidad de Illinois para la 'brittle diabetes' (Gangemi et al., 2008) consolidaron su eficacia sobre la "
+"inmunosupresor libre de glucocorticoides [1] y fue validado en un ensayo internacional "
+"multicéntrico [2]. Su indicación se reserva para la DM1 con hipoglucemias severas e "
+"inadvertidas y labilidad metabólica [5], [6]. Los ensayos "
+"de fase 3 del Clinical Islet Transplantation Consortium [7] y protocolos como el de la "
+"Universidad de Illinois para la 'brittle diabetes' [8] consolidaron su eficacia sobre la "
 "hipoglucemia, aunque la toxicidad inmunosupresora y la escasez de donantes siguen limitando su alcance "
-"(Bruni et al., 2014; Shapiro, 2012).", first_indent=0.5)
+"[9], [10].", first_indent=0.5)
 para("La hipoglucemia inadvertida (impaired awareness of hypoglycemia, IAH) —la pérdida de los síntomas de "
 "alarma— es el eje de la indicación: multiplica el riesgo de hipoglucemia severa. Por su parte, el consenso "
-"internacional sobre interpretación del CGM (Battelino et al., 2019) define objetivos estandarizados: tiempo "
+"internacional sobre interpretación del CGM [11] define objetivos estandarizados: tiempo "
 "en rango (TIR 70–180 mg/dL) ≥ 70%, tiempo por debajo de rango (TBR <54 mg/dL) < 1% y coeficiente de "
 "variación (%CV) < 36% como umbral de estabilidad glucémica. Estas métricas permiten traducir la 'labilidad' "
 "clínica en variables objetivas y reproducibles, base de la estratificación que se propone.", first_indent=0.5)
@@ -169,7 +182,7 @@ para("El principal obstáculo del trasplante es la toxicidad de la inmunosupresi
 "los ensayos de Eledon Pharmaceuticals (2024–2026) evaluaron el tegoprubart, un anticuerpo monoclonal "
 "anti-CD40L que bloquea la coestimulación linfocitaria: en un estudio piloto con 12 adultos, la totalidad "
 "alcanzó independencia de insulina con HbA1c inferior al 6,0% y buena tolerancia, sin nefrotoxicidad ni "
-"infecciones oportunistas (Paucara Saavedra, 2026; Cassola y Leal Niebla, 2026). Persisten, sin embargo, "
+"infecciones oportunistas [3], [4]. Persisten, sin embargo, "
 "limitaciones como la necesidad de infusiones intravenosas periódicas, la escasez de donantes y un "
 "seguimiento a largo plazo aún en curso. En la Argentina, el procedimiento se enmarca en la normativa del "
 "INCUCAI y se reserva para casos de DM1 con inestabilidad metabólica severa, lo que vuelve crítica una "
@@ -180,14 +193,14 @@ para("El principal obstáculo del trasplante es la toxicidad de la inmunosupresi
 # ============================== 3. METODOLOGÍA ==============================
 h1("3. Metodología")
 h2("3.1. Datos")
-para("Se utilizó el conjunto de datos público REPLACE-BG (Beck et al., 2017; Jaeb Center for Health "
+para("Se utilizó el conjunto de datos público REPLACE-BG [12] (Jaeb Center for Health "
 "Research), un ensayo clínico aleatorizado en 226 adultos con DM1 de larga data y buen control basal "
 "(HbA1c 6,4–9,0%). El dataset incluye el registro completo de CGM (14,8 millones de lecturas), datos de "
 "cribado (demografía, antecedentes), determinaciones de HbA1c y cuestionarios de percepción de hipoglucemia. "
 "El acceso es de descarga directa para investigación.")
 h2("3.2. Métricas de monitoreo continuo de glucosa")
 para("A partir del archivo crudo de CGM se calcularon, por paciente, las métricas del consenso internacional "
-"(Battelino et al., 2019): glucosa media, coeficiente de variación (%CV = desvío estándar / media), "
+"[11]: glucosa media, coeficiente de variación (%CV = desvío estándar / media), "
 "indicador de gestión de la glucosa (GMI), tiempo en rango (TIR 70–180 mg/dL), tiempo por debajo de rango "
 "(TBR <70 y <54 mg/dL) y tiempo por encima de rango (TAR >180 y >250 mg/dL). El procesamiento se realizó en "
 "flujo (streaming) sobre el archivo de 837 MB, acumulando estadísticos sin cargarlo íntegramente en memoria, "
@@ -199,8 +212,9 @@ para("Los criterios de la indicación de trasplante se operacionalizaron combina
 "(iv) tiempo en rango insuficiente (TIR < 70%). El perfil de labilidad glucémica —proxy de la candidatura de "
 "Edmonton— se definió como la coexistencia de hipoglucemia inadvertida y exposición excesiva a hipoglucemia. "
 "El análisis incluyó estadística descriptiva, comparación entre subgrupos (prueba t de Welch), segmentación "
-"no supervisada de fenotipos glucémicos (estandarización, PCA y K-Means, k=3) y una regresión logística de "
-"la hipoglucemia inadvertida en función de las métricas de CGM, la duración de la enfermedad y la edad.")
+"no supervisada de fenotipos glucémicos mediante estandarización, PCA y K-Means (k=3) con scikit-learn [13], "
+"y una regresión logística de la hipoglucemia inadvertida con statsmodels [14], en función de las métricas de "
+"CGM, la duración de la enfermedad y la edad.")
 
 # ============================== 4. RESULTADOS ==============================
 h1("4. Resultados")
@@ -219,7 +233,7 @@ para("La mayoría de la cohorte no alcanzaba los objetivos de consenso: el 71,7%
 "las distribuciones de las métricas clave frente a los umbrales de consenso.")
 tabla_csv(TAB/"tabla2_prevalencia_criterios.csv", "Tabla 2. Prevalencia de los criterios de candidatura en la cohorte.")
 figura(FIG/"fig1_prevalencia_criterios.png", "Figura 1. Prevalencia de los criterios de candidatura a trasplante de islotes; en naranja, el perfil de labilidad completo.", width=15)
-figura(FIG/"fig2_distribuciones.png", "Figura 2. Distribución de las métricas de CGM (%CV, TBR<54 y TIR) frente a los objetivos del consenso internacional (Battelino et al., 2019).", width=16)
+figura(FIG/"fig2_distribuciones.png", "Figura 2. Distribución de las métricas de CGM (%CV, TBR<54 y TIR) frente a los objetivos del consenso internacional [11].", width=16)
 h2("4.3. Mapa de riesgo y fenotipos glucémicos")
 para("El mapa de riesgo (Figura 3) evidencia una relación positiva entre la variabilidad glucémica y la "
 "exposición a hipoglucemia: los pacientes con perfil de labilidad se concentran en el cuadrante de %CV y "
@@ -244,8 +258,11 @@ para("La regresión logística (Tabla 5) mostró que la hipoglucemia inadvertida
 "no con las métricas de CGM del período de observación (%CV, TBR<54, TIR). Este resultado es coherente con la "
 "naturaleza crónica y autonómica de la falla en la percepción de hipoglucemia: la IAH refleja años de "
 "exposición acumulada más que el estado glucémico puntual, lo que refuerza la necesidad de combinar "
-"cuestionarios clínicos con métricas objetivas para identificar candidatos.")
-tabla_csv(TAB/"tabla5_logit_iah.csv", "Tabla 5. Regresión logística de la hipoglucemia inadvertida (IAH) en función de las métricas de CGM, la duración de la DM1 y la edad.")
+"cuestionarios clínicos con métricas objetivas para identificar candidatos. El modelo es globalmente "
+"significativo (test de razón de verosimilitud, p<0,001) y no presenta multicolinealidad (VIF < 2,4 en todos "
+"los predictores); la significación de la duración y la edad se mantiene bajo errores estándar robustos "
+"(HC1), lo que respalda la solidez del resultado.")
+tabla_csv(TAB/"tabla5_logit_iah.csv", "Tabla 5. Regresión logística de la hipoglucemia inadvertida (IAH): odds ratios, p-valores clásicos y robustos (HC1) y VIF.")
 
 # ============================== 5. DISCUSIÓN ==============================
 h1("5. Discusión")
@@ -272,8 +289,10 @@ para("Se presentó un pipeline reproducible de ciencia de datos que, sobre 14,8 
 "de CGM, estratifica objetivamente a pacientes con DM1 según los criterios de candidatura a trasplante de "
 "islotes. La variabilidad glucémica alta y el tiempo en rango insuficiente son muy frecuentes, pero el "
 "perfil de labilidad severa es minoritario (3,5%), lo que respalda una selección estricta de candidatos. La "
-"hipoglucemia inadvertida se asoció a la duración de la enfermedad y a la edad más que al CGM del momento.",
-first_indent=0.5)
+"hipoglucemia inadvertida se asoció a la duración de la enfermedad y a la edad más que al CGM del momento. "
+"El aporte, desde la informática, es un pipeline reproducible y un modelo de aprendizaje automático "
+"interpretable que materializa el paradigma del factor humano de la IA (Humanware 5.0): un sistema de apoyo "
+"a la decisión que asiste —sin reemplazar— el juicio clínico.", first_indent=0.5)
 para("Como líneas futuras se plantea: (i) aplicar el pipeline a cohortes con indicación real de trasplante "
 "(p. ej., registros CIT/CITR mediante solicitud de acceso); (ii) incorporar índices de labilidad glucémica "
 "validados (LI, MAGE, ADRR) y modelos de predicción de hipoglucemia severa; (iii) integrar datos de los "
@@ -285,14 +304,14 @@ h1("Referencias")
 refs = [
 '[1] A. M. J. Shapiro et al., "Islet transplantation in seven patients with type 1 diabetes mellitus using a glucocorticoid-free immunosuppressive regimen", New England Journal of Medicine, vol. 343, n.º 4, pp. 230–238, 2000.',
 '[2] A. M. J. Shapiro, C. Ricordi, B. J. Hering et al., "International Trial of the Edmonton Protocol for Islet Transplantation", New England Journal of Medicine, vol. 355, n.º 13, pp. 1318–1330, 2006.',
-'[3] C. Ricordi, J. S. Goldstein, A. N. Balamurugan et al., "NIH-sponsored Clinical Islet Transplantation Consortium Phase 3 Trial", Diabetes, vol. 65, pp. 3418–3428, 2016.',
-'[4] A. Gangemi et al., "Islet Transplantation for Brittle Type 1 Diabetes: The UIC Protocol", American Journal of Transplantation, vol. 8, pp. 1250–1261, 2008.',
-'[5] M. R. Rickels y R. P. Robertson, "Pancreatic Islet Transplantation in Humans: Recent Progress and Future Directions", Endocrine Reviews, vol. 40, n.º 2, pp. 631–668, 2019.',
-'[6] A. M. J. Shapiro, "Islet Transplantation in Type 1 Diabetes: Ongoing Challenges, Refined Procedures, and Long-Term Outcome", The Review of Diabetic Studies, vol. 9, n.º 4, pp. 385–406, 2012.',
-'[7] A. Bruni et al., "Islet cell transplantation for the treatment of type 1 diabetes: recent advances and future challenges", Diabetes, Metabolic Syndrome and Obesity, vol. 7, pp. 211–223, 2014.',
-'[8] Health Quality Ontario, "Pancreas Islet Transplantation for Patients With Type 1 Diabetes Mellitus: A Clinical Evidence Review", Ontario Health Technology Assessment Series, vol. 15, n.º 16, pp. 1–84, 2015.',
-'[9] N. M. Paucara Saavedra, "¿Cura a la diabetes? Avances y desafíos en el trasplante de islotes pancreáticos", XVI Congreso Argentino de Estudiantes de Nutrición, Facultad de Ciencias Médicas, Universidad de Buenos Aires, 2026.',
-'[10] M. Cassola y O. J. Leal Niebla, "Tegoprubart and the CD40L Pathway: Promise and Remaining Questions in CNI-Free Transplantation", BioNatura Journal, 2026.',
+'[3] N. M. Paucara Saavedra, "¿Cura a la diabetes? Avances y desafíos en el trasplante de islotes pancreáticos", XVI Congreso Argentino de Estudiantes de Nutrición, Facultad de Ciencias Médicas, Universidad de Buenos Aires, 2026.',
+'[4] M. Cassola y O. J. Leal Niebla, "Tegoprubart and the CD40L Pathway: Promise and Remaining Questions in CNI-Free Transplantation", BioNatura Journal, 2026.',
+'[5] Health Quality Ontario, "Pancreas Islet Transplantation for Patients With Type 1 Diabetes Mellitus: A Clinical Evidence Review", Ontario Health Technology Assessment Series, vol. 15, n.º 16, pp. 1–84, 2015.',
+'[6] M. R. Rickels y R. P. Robertson, "Pancreatic Islet Transplantation in Humans: Recent Progress and Future Directions", Endocrine Reviews, vol. 40, n.º 2, pp. 631–668, 2019.',
+'[7] C. Ricordi, J. S. Goldstein, A. N. Balamurugan et al., "NIH-sponsored Clinical Islet Transplantation Consortium Phase 3 Trial", Diabetes, vol. 65, pp. 3418–3428, 2016.',
+'[8] A. Gangemi et al., "Islet Transplantation for Brittle Type 1 Diabetes: The UIC Protocol", American Journal of Transplantation, vol. 8, pp. 1250–1261, 2008.',
+'[9] A. Bruni et al., "Islet cell transplantation for the treatment of type 1 diabetes: recent advances and future challenges", Diabetes, Metabolic Syndrome and Obesity, vol. 7, pp. 211–223, 2014.',
+'[10] A. M. J. Shapiro, "Islet Transplantation in Type 1 Diabetes: Ongoing Challenges, Refined Procedures, and Long-Term Outcome", The Review of Diabetic Studies, vol. 9, n.º 4, pp. 385–406, 2012.',
 '[11] T. Battelino, T. Danne, R. M. Bergenstal et al., "Clinical Targets for Continuous Glucose Monitoring Data Interpretation: Recommendations From the International Consensus on Time in Range", Diabetes Care, vol. 42, n.º 8, pp. 1593–1603, 2019.',
 '[12] R. W. Beck, T. D. Riddlesworth, K. Ruedy et al., "Continuous Glucose Monitoring Versus Usual Care in Patients With Type 1 Diabetes (REPLACE-BG)", Diabetes Care, vol. 40, n.º 4, pp. 538–545, 2017.',
 '[13] F. Pedregosa et al., "Scikit-learn: Machine Learning in Python", Journal of Machine Learning Research, vol. 12, pp. 2825–2830, 2011.',

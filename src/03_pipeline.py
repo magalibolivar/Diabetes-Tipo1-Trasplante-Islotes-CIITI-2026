@@ -20,6 +20,7 @@ from scipy import stats
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
+from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "processed" / "pacientes_dm1.csv"
@@ -79,7 +80,7 @@ for k,(col,lab,thr,tit) in enumerate(specs):
     ax[k].hist(df[col].dropna(), bins=25, color=AZUL, alpha=0.8, edgecolor="white")
     ax[k].axvline(thr, ls="--", color=NARANJA, lw=2, label=f"umbral {thr}")
     ax[k].set_xlabel(lab); ax[k].set_ylabel("N pacientes"); ax[k].set_title(tit); ax[k].legend(fontsize=8)
-fig.suptitle("Distribución de métricas de CGM frente a los objetivos de consenso (Battelino et al., 2019)",
+fig.suptitle("Distribución de métricas de CGM frente a los objetivos del consenso internacional",
              fontweight="bold", y=1.02)
 fig.tight_layout(); fig.savefig(FIG/"fig2_distribuciones.png", bbox_inches="tight"); plt.close(fig)
 
@@ -130,13 +131,20 @@ t3.to_csv(TAB/"tabla3_labilidad_vs_resto.csv", index=False, encoding="utf-8")
 
 # ---------- Regresión logística: IAH ~ métricas CGM ----------
 LOGF = ["cv_pct","tbr_54_pct","tir_70_180_pct","duracion_dm1","edad"]
+LLAB = {"cv_pct":"%CV","tbr_54_pct":"TBR<54","tir_70_180_pct":"TIR",
+        "duracion_dm1":"Duración DM1","edad":"Edad"}
 d2 = df.dropna(subset=LOGF+["iah"]).copy()
 Xl = sm.add_constant(d2[LOGF]); yl = d2["iah"].astype(int)
 logit = sm.Logit(yl, Xl).fit(disp=0)
-lt = pd.DataFrame({"variable":["Intercepto"]+LOGF,
+logit_r = sm.Logit(yl, Xl).fit(disp=0, cov_type="HC1")   # errores robustos
+vif = [variance_inflation_factor(Xl.values, i) for i in range(Xl.shape[1])]
+def pf(p): return "<0.001" if p < 0.001 else f"{p:.3f}"
+lt = pd.DataFrame({"variable":["Intercepto"]+[LLAB[f] for f in LOGF],
     "coef":logit.params.round(3).values,
     "OR":np.exp(logit.params).round(3).values,
-    "p":[f"{p:.3f}" if p>=0.001 else "<0.001" for p in logit.pvalues]})
+    "p":[pf(p) for p in logit.pvalues],
+    "p_robusto_HC1":[pf(p) for p in logit_r.pvalues],
+    "VIF":[float("nan")]+[round(v,2) for v in vif[1:]]})
 lt.to_csv(TAB/"tabla5_logit_iah.csv", index=False, encoding="utf-8")
 
 # ---------- Figura 5: comparación labilidad vs resto (boxplots) ----------
@@ -154,7 +162,7 @@ fig.suptitle("Comparación del perfil de labilidad glucémica frente al resto de
 fig.tight_layout(); fig.savefig(FIG/"fig5_comparacion_boxplots.png", bbox_inches="tight"); plt.close(fig)
 
 # ---------- Figura 6: correlación entre métricas de CGM y criterios ----------
-CM = ["glucosa_media","cv_pct","gmi_pct","tir_70_180_pct","tbr_70_pct","tbr_54_pct","tar_250_pct","score_riesgo"]
+CM = ["glucosa_media","cv_pct","tir_70_180_pct","tbr_70_pct","tbr_54_pct","tar_250_pct","score_riesgo"]
 CLAB = {"glucosa_media":"Glucosa media","cv_pct":"%CV","gmi_pct":"GMI","tir_70_180_pct":"TIR",
         "tbr_70_pct":"TBR<70","tbr_54_pct":"TBR<54","tar_250_pct":"TAR>250","score_riesgo":"Score riesgo"}
 cc = df[CM].corr().round(2).rename(index=CLAB, columns=CLAB)
@@ -172,5 +180,6 @@ fig.tight_layout(); fig.savefig(FIG/"fig6_correlacion.png", bbox_inches="tight")
 
 print("\n=== Prevalencia criterios ==="); print(t2.to_string(index=False))
 print(f"\n=== Fenotipos (K-Means) ===\n{prof.to_string()}")
-print(f"\n=== Logit IAH pseudo-R2={logit.prsquared:.3f} ===\n{lt.to_string(index=False)}")
+print(f"\n=== Logit IAH pseudo-R2={logit.prsquared:.3f} | LLR p={logit.llr_pvalue:.4f} | "
+      f"VIF máx={max(vif[1:]):.2f} ===\n{lt.to_string(index=False)}")
 print("\nOK - figuras en figures/, tablas en tables/")
