@@ -149,15 +149,24 @@ para("Sin embargo, el trasplante exige inmunosupresión crónica (habitualmente 
 "metabólico y baja variabilidad glucémica el procedimiento presenta más riesgos que beneficios.", first_indent=0.5)
 para("La selección de candidatos, no obstante, se apoya con frecuencia en criterios clínicos cualitativos. El "
 "monitoreo continuo de glucosa (CGM) permite cuantificar de manera objetiva la variabilidad y la exposición "
-"a hipoglucemia. El objetivo de este trabajo es construir, con datos reales y un pipeline reproducible, una "
-"estratificación objetiva de candidatos a trasplante de islotes, cuantificando en una población de DM1 la "
-"prevalencia de los criterios de labilidad glucémica que definen la indicación.", first_indent=0.5)
+"a hipoglucemia. El objetivo de este trabajo es doble y se apoya en una misma señal de CGM: por un lado, "
+"construir con datos reales y un pipeline reproducible una estratificación objetiva de candidatos a "
+"trasplante —cuantificando en una población de DM1 la prevalencia de los criterios de labilidad que definen "
+"la indicación—; por otro, anticipar la hipoglucemia en el corto plazo para asistir la decisión en tiempo "
+"real. Son dos horizontes de una misma pregunta: a quién conviene evaluar y cuándo conviene actuar.", first_indent=0.5)
 para("El desafío no es menor del lado de los datos. Trabajar con casi 15 millones de registros de sensor "
 "obliga a procesarlos en flujo, sin cargarlos enteros en memoria, y a reconstruir a partir de la señal cruda "
 "las variables clínicas que realmente importan; recién sobre esa base tiene sentido buscar patrones y "
 "modelar el riesgo. Ese recorrido —de la señal al criterio de candidatura— se documentó de principio a fin "
 "para que cualquier equipo pueda repetirlo y auditarlo, y se concibió como apoyo a la decisión clínica: una "
 "herramienta que ordena la evidencia, no que reemplaza el juicio del profesional.", first_indent=0.5)
+para("En concreto, el trabajo aporta: (i) un procesamiento en flujo de 14,8 millones de lecturas que "
+"reconstruye, desde la señal cruda, las métricas de consenso y los índices de riesgo validados de Kovatchev "
+"(LBGI, HBGI, ADRR); (ii) una operacionalización transparente y auditable de los criterios de candidatura de "
+"Edmonton, con análisis de sensibilidad de sus umbrales; y (iii) un modelo interpretable de alerta temprana "
+"de hipoglucemia, validado por paciente para evitar la fuga de información. Los tres componentes comparten un "
+"mismo principio: convertir una señal masiva en decisiones explicables que asisten —sin reemplazar— al "
+"profesional.", first_indent=0.5)
 
 # ============================== 2. MARCO CONCEPTUAL ==============================
 h1("2. Marco conceptual")
@@ -370,8 +379,9 @@ para("Se presentó un pipeline reproducible de ciencia de datos que, sobre 14,8 
 "decisión, en sintonía con el factor humano de la inteligencia artificial (Humanware 5.0): una herramienta "
 "que asiste, sin reemplazar, el juicio del profesional.", first_indent=0.5)
 para("Como líneas futuras se plantea: (i) aplicar el pipeline a cohortes con indicación real de trasplante "
-"(p. ej., registros CIT/CITR mediante solicitud de acceso); (ii) incorporar índices de labilidad glucémica "
-"validados (LI, MAGE, ADRR) y modelos de predicción de hipoglucemia severa; (iii) integrar datos de los "
+"(p. ej., registros CIT/CITR mediante solicitud de acceso); (ii) extender el modelo de alerta a la "
+"hipoglucemia severa (<54 mg/dL) y a horizontes más largos, e incorporar índices adicionales como el MAGE; "
+"(iii) integrar datos de los "
 "nuevos ensayos con tegoprubart para vincular el perfil glucémico basal con la respuesta post-trasplante; y "
 "(iv) desarrollar una herramienta de tablero interactivo para la evaluación pretrasplante.", first_indent=0.5)
 
