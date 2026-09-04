@@ -1,0 +1,4 @@
+Modelo,AUC-ROC,AUC-PR
+Baseline (glucosa actual),0.974,0.803
+Regresión logística,0.983,0.81
+Gradient Boosting,0.985,0.857
