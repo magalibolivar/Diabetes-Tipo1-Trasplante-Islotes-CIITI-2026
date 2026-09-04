@@ -1,0 +1,18 @@
+# Datos crudos pesados y con licencia (no redistribuibles) — descargar de la fuente
+data/raw/*.zip
+data/raw/Data Tables/
+*.ASC
+
+# El paper se versiona en Word (.docx); el PDF se genera aparte
+paper/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
+Thumbs.db
