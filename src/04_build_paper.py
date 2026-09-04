@@ -1,0 +1,306 @@
+# -*- coding: utf-8 -*-
+"""04 - Genera el paper (.docx) del estudio de labilidad glucémica / candidatura a
+trasplante de islotes, en el formato de Referencia.docx (UAI/CAETI)."""
+from pathlib import Path
+import pandas as pd
+from docx import Document
+from docx.shared import Pt, Cm
+from docx.enum.text import WD_ALIGN_PARAGRAPH as AL
+from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.oxml.ns import qn
+
+ROOT = Path(__file__).resolve().parent.parent
+FIG, TAB = ROOT / "figures", ROOT / "tables"
+OUT = ROOT / "paper" / "Labilidad_Glucemica_Trasplante_Islotes_DM1_UAI.docx"
+OUT.parent.mkdir(parents=True, exist_ok=True)
+
+doc = Document()
+s = doc.sections[0]
+s.page_width, s.page_height = Cm(21.0), Cm(29.7)
+s.left_margin = s.right_margin = s.top_margin = s.bottom_margin = Cm(2.54)
+normal = doc.styles["Normal"]; normal.font.name = "Times New Roman"; normal.font.size = Pt(12)
+normal._element.rPr.rFonts.set(qn('w:eastAsia'), "Times New Roman")
+pf = normal.paragraph_format; pf.alignment = AL.JUSTIFY; pf.space_after = Pt(6); pf.line_spacing = 1.0
+
+def _font(run, name="Times New Roman", size=12, bold=False, italic=False):
+    run.font.name = name; run.font.size = Pt(size); run.bold = bold; run.italic = italic
+    run._element.rPr.rFonts.set(qn('w:eastAsia'), name)
+
+def para(text="", align=AL.JUSTIFY, bold=False, italic=False, size=12, space_after=6, first_indent=None):
+    p = doc.add_paragraph(); p.alignment = align; p.paragraph_format.space_after = Pt(space_after)
+    if first_indent: p.paragraph_format.first_line_indent = Cm(first_indent)
+    if text: _font(p.add_run(text), "Times New Roman", size, bold, italic)
+    return p
+
+def runs_para(segments, align=AL.JUSTIFY, space_after=6):
+    p = doc.add_paragraph(); p.alignment = align; p.paragraph_format.space_after = Pt(space_after)
+    for t, b, i in segments: _font(p.add_run(t), "Times New Roman", 12, b, i)
+    return p
+
+def h1(text):
+    p = doc.add_paragraph(); p.alignment = AL.LEFT
+    p.paragraph_format.space_before = Pt(12); p.paragraph_format.space_after = Pt(6)
+    _font(p.add_run(text), bold=True); return p
+
+def h2(text):
+    p = doc.add_paragraph(); p.alignment = AL.LEFT
+    p.paragraph_format.space_before = Pt(8); p.paragraph_format.space_after = Pt(4)
+    _font(p.add_run(text), bold=True); return p
+
+def figura(path, caption, width=15.0):
+    p = doc.add_paragraph(); p.alignment = AL.CENTER; p.paragraph_format.space_before = Pt(6)
+    p.add_run().add_picture(str(path), width=Cm(width))
+    c = doc.add_paragraph(); c.alignment = AL.CENTER; c.paragraph_format.space_after = Pt(8)
+    _font(c.add_run(caption), "Times New Roman", 11)
+
+def tabla_csv(csv_path, caption):
+    df = pd.read_csv(csv_path)
+    c = doc.add_paragraph(); c.alignment = AL.CENTER
+    c.paragraph_format.space_before = Pt(6); c.paragraph_format.space_after = Pt(2)
+    _font(c.add_run(caption), "Times New Roman", 11, bold=True)
+    cols = list(df.columns)
+    t = doc.add_table(rows=1, cols=len(cols)); t.alignment = WD_TABLE_ALIGNMENT.CENTER; t.style = "Table Grid"
+    for j, cn in enumerate(cols):
+        pp = t.rows[0].cells[j].paragraphs[0]; pp.alignment = AL.CENTER
+        _font(pp.add_run(str(cn)), "Times New Roman", 9, bold=True)
+    for _, row in df.iterrows():
+        cells = t.add_row().cells
+        for j, cn in enumerate(cols):
+            v = row[cn]
+            if pd.isna(v): v = "—"
+            elif isinstance(v, float): v = f"{v:.3f}".rstrip('0').rstrip('.') if abs(v) < 1000 else f"{v:.0f}"
+            pp = cells[j].paragraphs[0]; pp.alignment = AL.CENTER if j > 0 else AL.LEFT
+            _font(pp.add_run(str(v)), "Times New Roman", 9)
+    doc.add_paragraph().paragraph_format.space_after = Pt(4)
+
+# ============================== PORTADA ==============================
+para("Estratificación de candidatos a trasplante de islotes pancreáticos mediante análisis de "
+     "variabilidad glucémica en diabetes tipo 1: un enfoque de ciencia de datos sobre datos reales "
+     "de monitoreo continuo de glucosa", align=AL.CENTER, bold=True, size=14, space_after=4)
+para("Stratifying Pancreatic Islet Transplantation Candidates through Glycemic Variability Analysis in "
+     "Type 1 Diabetes: A Data Science Approach on Real-World Continuous Glucose Monitoring Data",
+     align=AL.CENTER, italic=True, size=11, space_after=10)
+para("Magali Bolivar, María Florencia Rossi, Matías Montiel, Nestor Balich, Franco Balich", align=AL.CENTER, space_after=2)
+para("CAETI - Centro de Altos Estudios en Tecnología Informática", align=AL.CENTER, space_after=0)
+para("Universidad Abierta Interamericana. Informática (UAI)", align=AL.CENTER, space_after=0)
+para("Montes de Oca 745. Ciudad Autónoma de Buenos Aires, Argentina.", align=AL.CENTER, space_after=2)
+para("{MagaliFlorencia.BolivarCruz, MariaFlorencia.Rossi, MatiasNicolas.MontielTorres}@alumnos.uai.edu.ar", align=AL.CENTER, space_after=0)
+para("{nestor.balich, francoadrian.balich}@uai.edu.ar", align=AL.CENTER, space_after=10)
+
+# ============================== RESUMEN ==============================
+h1("Resumen")
+para("El trasplante alogénico de islotes pancreáticos (Protocolo Edmonton) es una alternativa terapéutica "
+"para la diabetes mellitus tipo 1 (DM1), reservada para pacientes con inestabilidad metabólica severa e "
+"hipoglucemias inadvertidas, dado que exige inmunosupresión crónica con riesgo de toxicidad. Nuevas terapias "
+"como el tegoprubart (anticuerpo anti-CD40L) buscan reducir esa toxicidad, pero la selección del paciente "
+"sigue siendo determinante: el beneficio solo supera al riesgo en quienes presentan un perfil de labilidad "
+"glucémica marcada. Este trabajo aplica un pipeline reproducible de ciencia de datos para cuantificar, sobre "
+"datos reales, qué proporción de una población de DM1 cumple los criterios de candidatura. Se procesaron "
+"14,8 millones de lecturas de monitoreo continuo de glucosa (CGM) de 226 adultos con DM1 del estudio "
+"REPLACE-BG, calculando las métricas del consenso internacional (coeficiente de variación, tiempo en rango y "
+"tiempo en hipoglucemia) e integrándolas con cuestionarios de percepción de hipoglucemia. Se operacionalizaron "
+"los criterios de Edmonton, se compararon los subgrupos, se segmentaron fenotipos glucémicos (PCA + K-Means) "
+"y se estimó una regresión logística de la hipoglucemia inadvertida. La variabilidad glucémica alta (%CV ≥ 36%) "
+"afectó al 64,6% de la cohorte y la hipoglucemia inadvertida al 17,3%, pero solo el 3,5% reunió el perfil "
+"completo de labilidad compatible con la indicación de trasplante. La hipoglucemia inadvertida se asoció a la "
+"duración de la DM1 y a la edad, y no a las métricas de CGM del momento. Los resultados aportan una "
+"herramienta objetiva y reproducible para priorizar candidatos y respaldan cuantitativamente que el "
+"trasplante debe reservarse para un subgrupo minoritario y bien caracterizado.")
+runs_para([("Palabras clave: ", True, False),
+("diabetes tipo 1; trasplante de islotes; variabilidad glucémica; monitoreo continuo de glucosa; "
+"hipoglucemia inadvertida; ciencia de datos.", False, False)])
+h1("Abstract")
+para("Allogeneic pancreatic islet transplantation (Edmonton Protocol) is a therapeutic option for type 1 "
+"diabetes (T1D), reserved for patients with severe metabolic instability and impaired awareness of "
+"hypoglycemia, since it requires chronic immunosuppression with toxicity risk. Novel therapies such as "
+"tegoprubart (anti-CD40L antibody) aim to reduce that toxicity, but patient selection remains decisive: the "
+"benefit outweighs the risk only in those with marked glycemic lability. This work applies a reproducible "
+"data-science pipeline to quantify, on real-world data, what fraction of a T1D population meets candidacy "
+"criteria. We processed 14.8 million continuous glucose monitoring (CGM) readings from 226 adults with T1D "
+"from the REPLACE-BG study, computing international-consensus metrics and integrating them with hypoglycemia "
+"perception questionnaires. High glycemic variability (%CV ≥ 36%) affected 64.6% of the cohort and impaired "
+"awareness of hypoglycemia 17.3%, yet only 3.5% met the full lability profile compatible with transplant "
+"indication. Impaired awareness was associated with T1D duration and age rather than with current CGM "
+"metrics. The results provide an objective, reproducible tool to prioritize candidates and quantitatively "
+"support reserving transplantation for a small, well-characterized subgroup.", italic=True)
+runs_para([("Keywords: ", True, True),
+("type 1 diabetes; islet transplantation; glycemic variability; continuous glucose monitoring; impaired "
+"awareness of hypoglycemia; data science.", False, True)])
+
+# ============================== 1. INTRODUCCIÓN ==============================
+h1("1. Introducción")
+para("La diabetes mellitus tipo 1 (DM1) se caracteriza por la destrucción autoinmune de las células beta "
+"pancreáticas, lo que genera una dependencia absoluta de la insulina exógena. Pese a los avances en "
+"insulinoterapia y en tecnología de administración, una subpoblación de pacientes experimenta labilidad "
+"glucémica extrema, con hipoglucemias severas recurrentes e hipoglucemia inadvertida —un síndrome de falla "
+"autonómica que eleva de forma drástica la morbimortalidad—. En este escenario, el trasplante alogénico de "
+"islotes pancreáticos ha emergido como una intervención capaz de restaurar la masa de células beta y la "
+"homeostasis glucémica (Shapiro et al., 2000; Shapiro et al., 2006).", first_indent=0.5)
+para("Sin embargo, el trasplante exige inmunosupresión crónica (habitualmente tacrolimus y sirolimus) con "
+"riesgo de nefrotoxicidad, infecciones y neoplasias, por lo que se reserva para pacientes con inestabilidad "
+"metabólica severa. Ensayos recientes con tegoprubart, un anticuerpo monoclonal anti-CD40L, muestran "
+"resultados prometedores en independencia de insulina con menor toxicidad (Paucara Saavedra, 2026; Cassola y "
+"Leal Niebla, 2026), pero no eliminan la premisa central: la relación riesgo-beneficio solo es favorable en "
+"pacientes cuidadosamente seleccionados. Como concluye la literatura, en pacientes con buen control "
+"metabólico y baja variabilidad glucémica el procedimiento presenta más riesgos que beneficios.", first_indent=0.5)
+para("La selección de candidatos, no obstante, se apoya con frecuencia en criterios clínicos cualitativos. El "
+"monitoreo continuo de glucosa (CGM) permite cuantificar de manera objetiva la variabilidad y la exposición "
+"a hipoglucemia. El objetivo de este trabajo es construir, con datos reales y un pipeline reproducible, una "
+"estratificación objetiva de candidatos a trasplante de islotes, cuantificando en una población de DM1 la "
+"prevalencia de los criterios de labilidad glucémica que definen la indicación.", first_indent=0.5)
+
+# ============================== 2. MARCO CONCEPTUAL ==============================
+h1("2. Marco conceptual")
+para("El Protocolo Edmonton estableció la viabilidad del trasplante de islotes con un régimen "
+"inmunosupresor libre de glucocorticoides (Shapiro et al., 2000) y fue validado en un ensayo internacional "
+"multicéntrico (Shapiro et al., 2006). Su indicación se reserva para la DM1 con hipoglucemias severas e "
+"inadvertidas y labilidad metabólica (Health Quality Ontario, 2015; Rickels y Robertson, 2019). Los ensayos "
+"de fase 3 del Clinical Islet Transplantation Consortium (Ricordi et al., 2016) y protocolos como el de la "
+"Universidad de Illinois para la 'brittle diabetes' (Gangemi et al., 2008) consolidaron su eficacia sobre la "
+"hipoglucemia, aunque la toxicidad inmunosupresora y la escasez de donantes siguen limitando su alcance "
+"(Bruni et al., 2014; Shapiro, 2012).", first_indent=0.5)
+para("La hipoglucemia inadvertida (impaired awareness of hypoglycemia, IAH) —la pérdida de los síntomas de "
+"alarma— es el eje de la indicación: multiplica el riesgo de hipoglucemia severa. Por su parte, el consenso "
+"internacional sobre interpretación del CGM (Battelino et al., 2019) define objetivos estandarizados: tiempo "
+"en rango (TIR 70–180 mg/dL) ≥ 70%, tiempo por debajo de rango (TBR <54 mg/dL) < 1% y coeficiente de "
+"variación (%CV) < 36% como umbral de estabilidad glucémica. Estas métricas permiten traducir la 'labilidad' "
+"clínica en variables objetivas y reproducibles, base de la estratificación que se propone.", first_indent=0.5)
+para("El principal obstáculo del trasplante es la toxicidad de la inmunosupresión crónica. Para superarlo, "
+"los ensayos de Eledon Pharmaceuticals (2024–2026) evaluaron el tegoprubart, un anticuerpo monoclonal "
+"anti-CD40L que bloquea la coestimulación linfocitaria: en un estudio piloto con 12 adultos, la totalidad "
+"alcanzó independencia de insulina con HbA1c inferior al 6,0% y buena tolerancia, sin nefrotoxicidad ni "
+"infecciones oportunistas (Paucara Saavedra, 2026; Cassola y Leal Niebla, 2026). Persisten, sin embargo, "
+"limitaciones como la necesidad de infusiones intravenosas periódicas, la escasez de donantes y un "
+"seguimiento a largo plazo aún en curso. En la Argentina, el procedimiento se enmarca en la normativa del "
+"INCUCAI y se reserva para casos de DM1 con inestabilidad metabólica severa, lo que vuelve crítica una "
+"estratificación objetiva de candidatos y el abordaje por equipos multidisciplinarios. En este contexto, "
+"disponer de una herramienta cuantitativa y reproducible para priorizar la evaluación pretrasplante adquiere "
+"particular relevancia.", first_indent=0.5)
+
+# ============================== 3. METODOLOGÍA ==============================
+h1("3. Metodología")
+h2("3.1. Datos")
+para("Se utilizó el conjunto de datos público REPLACE-BG (Beck et al., 2017; Jaeb Center for Health "
+"Research), un ensayo clínico aleatorizado en 226 adultos con DM1 de larga data y buen control basal "
+"(HbA1c 6,4–9,0%). El dataset incluye el registro completo de CGM (14,8 millones de lecturas), datos de "
+"cribado (demografía, antecedentes), determinaciones de HbA1c y cuestionarios de percepción de hipoglucemia. "
+"El acceso es de descarga directa para investigación.")
+h2("3.2. Métricas de monitoreo continuo de glucosa")
+para("A partir del archivo crudo de CGM se calcularon, por paciente, las métricas del consenso internacional "
+"(Battelino et al., 2019): glucosa media, coeficiente de variación (%CV = desvío estándar / media), "
+"indicador de gestión de la glucosa (GMI), tiempo en rango (TIR 70–180 mg/dL), tiempo por debajo de rango "
+"(TBR <70 y <54 mg/dL) y tiempo por encima de rango (TAR >180 y >250 mg/dL). El procesamiento se realizó en "
+"flujo (streaming) sobre el archivo de 837 MB, acumulando estadísticos sin cargarlo íntegramente en memoria, "
+"lo que garantiza la reproducibilidad y la escalabilidad del pipeline (Python, pandas).")
+h2("3.3. Criterios de candidatura y análisis")
+para("Los criterios de la indicación de trasplante se operacionalizaron combinando los cuestionarios y las "
+"métricas de CGM: (i) hipoglucemia inadvertida (IAH), definida por la pérdida de los síntomas de alarma; "
+"(ii) variabilidad glucémica alta (%CV ≥ 36%); (iii) exposición excesiva a hipoglucemia (TBR <54 > 1%); y "
+"(iv) tiempo en rango insuficiente (TIR < 70%). El perfil de labilidad glucémica —proxy de la candidatura de "
+"Edmonton— se definió como la coexistencia de hipoglucemia inadvertida y exposición excesiva a hipoglucemia. "
+"El análisis incluyó estadística descriptiva, comparación entre subgrupos (prueba t de Welch), segmentación "
+"no supervisada de fenotipos glucémicos (estandarización, PCA y K-Means, k=3) y una regresión logística de "
+"la hipoglucemia inadvertida en función de las métricas de CGM, la duración de la enfermedad y la edad.")
+
+# ============================== 4. RESULTADOS ==============================
+h1("4. Resultados")
+h2("4.1. Características de la cohorte")
+para("La cohorte (N=226) tenía una edad media de 44,0 años, una duración media de la DM1 de 23,3 años y una "
+"HbA1c basal media de 7,3%, con equilibrio por sexo (Tabla 1). Pese al buen control aparente, las métricas "
+"de CGM revelaron una carga glucémica considerable: TIR medio del 63,1%, %CV medio del 37,4% y un tiempo en "
+"hipoglucemia <54 mg/dL del 1,0% de media.")
+tabla_csv(TAB/"tabla1_cohorte.csv", "Tabla 1. Características clínicas y métricas de CGM de la cohorte (N=226).")
+h2("4.2. Prevalencia de los criterios de candidatura")
+para("La mayoría de la cohorte no alcanzaba los objetivos de consenso: el 71,7% presentaba un TIR "
+"insuficiente y el 64,6% una variabilidad glucémica alta (Figura 1, Tabla 2). La exposición excesiva a "
+"hipoglucemia afectaba al 34,5% y la hipoglucemia inadvertida al 17,3%. Sin embargo, al exigir el perfil "
+"completo de labilidad (hipoglucemia inadvertida más exposición excesiva a hipoglucemia), solo el 3,5% de la "
+"cohorte (8 pacientes) reunía la condición compatible con la indicación de trasplante. La Figura 2 muestra "
+"las distribuciones de las métricas clave frente a los umbrales de consenso.")
+tabla_csv(TAB/"tabla2_prevalencia_criterios.csv", "Tabla 2. Prevalencia de los criterios de candidatura en la cohorte.")
+figura(FIG/"fig1_prevalencia_criterios.png", "Figura 1. Prevalencia de los criterios de candidatura a trasplante de islotes; en naranja, el perfil de labilidad completo.", width=15)
+figura(FIG/"fig2_distribuciones.png", "Figura 2. Distribución de las métricas de CGM (%CV, TBR<54 y TIR) frente a los objetivos del consenso internacional (Battelino et al., 2019).", width=16)
+h2("4.3. Mapa de riesgo y fenotipos glucémicos")
+para("El mapa de riesgo (Figura 3) evidencia una relación positiva entre la variabilidad glucémica y la "
+"exposición a hipoglucemia: los pacientes con perfil de labilidad se concentran en el cuadrante de %CV y "
+"TBR<54 elevados. La segmentación no supervisada (Figura 4, Tabla 4) identificó tres fenotipos glucémicos: "
+"uno de buen control (mayor TIR, menor variabilidad), uno hiperglucémico (glucosa media y TAR elevados con "
+"TIR bajo) y uno lábil (alta variabilidad y mayor exposición a hipoglucemia), que concentra los perfiles de "
+"candidatura. La comparación entre el subgrupo con perfil de labilidad y el resto (Tabla 3) confirma "
+"diferencias marcadas en variabilidad y tiempo en hipoglucemia.")
+figura(FIG/"fig3_mapa_riesgo.png", "Figura 3. Mapa de riesgo glucémico (variabilidad %CV vs. tiempo en hipoglucemia <54 mg/dL); líneas discontinuas: umbrales de consenso.", width=12)
+tabla_csv(TAB/"tabla3_labilidad_vs_resto.csv", "Tabla 3. Comparación entre el subgrupo con perfil de labilidad y el resto de la cohorte (prueba t de Welch).")
+figura(FIG/"fig4_fenotipos_pca.png", "Figura 4. Fenotipos glucémicos identificados por K-Means (k=3) en el espacio de las dos primeras componentes principales.", width=11)
+tabla_csv(TAB/"tabla4_fenotipos.csv", "Tabla 4. Perfil promedio de los fenotipos glucémicos (K-Means, k=3).")
+figura(FIG/"fig5_comparacion_boxplots.png", "Figura 5. Comparación de las métricas de CGM entre el subgrupo con perfil de labilidad y el resto de la cohorte (líneas discontinuas: umbrales de consenso).", width=15)
+para("La matriz de correlación entre las métricas de CGM (Figura 6) confirma la coherencia interna de los "
+"indicadores: la variabilidad (%CV) se asocia positivamente con la exposición a hipoglucemia (TBR<54) y "
+"negativamente con el tiempo en rango, mientras que el score de riesgo glucémico resume de forma compacta "
+"esta estructura, correlacionando de manera fuerte con las variables que penalizan el control.")
+figura(FIG/"fig6_correlacion.png", "Figura 6. Matriz de correlación de Pearson entre las métricas de CGM y el score de riesgo glucémico.", width=12)
+h2("4.4. Determinantes de la hipoglucemia inadvertida")
+para("La regresión logística (Tabla 5) mostró que la hipoglucemia inadvertida se asocia de manera "
+"significativa con la duración de la DM1 (OR≈1,04 por año; p=0,016) y con la edad (OR≈1,04; p=0,039), pero "
+"no con las métricas de CGM del período de observación (%CV, TBR<54, TIR). Este resultado es coherente con la "
+"naturaleza crónica y autonómica de la falla en la percepción de hipoglucemia: la IAH refleja años de "
+"exposición acumulada más que el estado glucémico puntual, lo que refuerza la necesidad de combinar "
+"cuestionarios clínicos con métricas objetivas para identificar candidatos.")
+tabla_csv(TAB/"tabla5_logit_iah.csv", "Tabla 5. Regresión logística de la hipoglucemia inadvertida (IAH) en función de las métricas de CGM, la duración de la DM1 y la edad.")
+
+# ============================== 5. DISCUSIÓN ==============================
+h1("5. Discusión")
+para("Los resultados cuantifican una intuición clínica central del trasplante de islotes: aunque la carga "
+"glucémica subóptima es muy frecuente en la DM1 (dos de cada tres pacientes con variabilidad alta o TIR "
+"insuficiente), el perfil de labilidad severa que justifica el riesgo de la inmunosupresión es minoritario "
+"(3,5%). Esto respalda de forma empírica la recomendación de reservar el procedimiento —y las nuevas terapias "
+"como el tegoprubart— para un subgrupo cuidadosamente seleccionado, y advierte contra una indicación "
+"guiada solo por el mal control global.", first_indent=0.5)
+para("El hallazgo de que la hipoglucemia inadvertida depende de la duración y la edad, y no de las métricas "
+"de CGM del momento, tiene una implicancia práctica: la estratificación de candidatos no puede basarse "
+"únicamente en el CGM reciente, sino que debe integrar la historia clínica y la evaluación de la percepción "
+"de hipoglucemia. La combinación de ambas fuentes —como propone este pipeline— ofrece una herramienta "
+"objetiva y reproducible para priorizar la evaluación pretrasplante.", first_indent=0.5)
+para("Entre las limitaciones, REPLACE-BG es una población de DM1 con buen control basal en la que la "
+"hipoglucemia severa fue criterio de exclusión, por lo que la prevalencia del perfil de labilidad "
+"probablemente subestima la de una población con indicación real de trasplante; el diseño es transversal y "
+"la definición operacional de candidatura es un proxy de los criterios clínicos completos. No obstante, el "
+"marco metodológico es directamente transferible a cohortes de mayor riesgo.", first_indent=0.5)
+
+# ============================== 6. CONCLUSIONES ==============================
+h1("6. Conclusiones y trabajos futuros")
+para("Se presentó un pipeline reproducible de ciencia de datos que, sobre 14,8 millones de lecturas reales "
+"de CGM, estratifica objetivamente a pacientes con DM1 según los criterios de candidatura a trasplante de "
+"islotes. La variabilidad glucémica alta y el tiempo en rango insuficiente son muy frecuentes, pero el "
+"perfil de labilidad severa es minoritario (3,5%), lo que respalda una selección estricta de candidatos. La "
+"hipoglucemia inadvertida se asoció a la duración de la enfermedad y a la edad más que al CGM del momento.",
+first_indent=0.5)
+para("Como líneas futuras se plantea: (i) aplicar el pipeline a cohortes con indicación real de trasplante "
+"(p. ej., registros CIT/CITR mediante solicitud de acceso); (ii) incorporar índices de labilidad glucémica "
+"validados (LI, MAGE, ADRR) y modelos de predicción de hipoglucemia severa; (iii) integrar datos de los "
+"nuevos ensayos con tegoprubart para vincular el perfil glucémico basal con la respuesta post-trasplante; y "
+"(iv) desarrollar una herramienta de tablero interactivo para la evaluación pretrasplante.", first_indent=0.5)
+
+# ============================== REFERENCIAS ==============================
+h1("Referencias")
+refs = [
+'[1] A. M. J. Shapiro et al., "Islet transplantation in seven patients with type 1 diabetes mellitus using a glucocorticoid-free immunosuppressive regimen", New England Journal of Medicine, vol. 343, n.º 4, pp. 230–238, 2000.',
+'[2] A. M. J. Shapiro, C. Ricordi, B. J. Hering et al., "International Trial of the Edmonton Protocol for Islet Transplantation", New England Journal of Medicine, vol. 355, n.º 13, pp. 1318–1330, 2006.',
+'[3] C. Ricordi, J. S. Goldstein, A. N. Balamurugan et al., "NIH-sponsored Clinical Islet Transplantation Consortium Phase 3 Trial", Diabetes, vol. 65, pp. 3418–3428, 2016.',
+'[4] A. Gangemi et al., "Islet Transplantation for Brittle Type 1 Diabetes: The UIC Protocol", American Journal of Transplantation, vol. 8, pp. 1250–1261, 2008.',
+'[5] M. R. Rickels y R. P. Robertson, "Pancreatic Islet Transplantation in Humans: Recent Progress and Future Directions", Endocrine Reviews, vol. 40, n.º 2, pp. 631–668, 2019.',
+'[6] A. M. J. Shapiro, "Islet Transplantation in Type 1 Diabetes: Ongoing Challenges, Refined Procedures, and Long-Term Outcome", The Review of Diabetic Studies, vol. 9, n.º 4, pp. 385–406, 2012.',
+'[7] A. Bruni et al., "Islet cell transplantation for the treatment of type 1 diabetes: recent advances and future challenges", Diabetes, Metabolic Syndrome and Obesity, vol. 7, pp. 211–223, 2014.',
+'[8] Health Quality Ontario, "Pancreas Islet Transplantation for Patients With Type 1 Diabetes Mellitus: A Clinical Evidence Review", Ontario Health Technology Assessment Series, vol. 15, n.º 16, pp. 1–84, 2015.',
+'[9] N. M. Paucara Saavedra, "¿Cura a la diabetes? Avances y desafíos en el trasplante de islotes pancreáticos", XVI Congreso Argentino de Estudiantes de Nutrición, Facultad de Ciencias Médicas, Universidad de Buenos Aires, 2026.',
+'[10] M. Cassola y O. J. Leal Niebla, "Tegoprubart and the CD40L Pathway: Promise and Remaining Questions in CNI-Free Transplantation", BioNatura Journal, 2026.',
+'[11] T. Battelino, T. Danne, R. M. Bergenstal et al., "Clinical Targets for Continuous Glucose Monitoring Data Interpretation: Recommendations From the International Consensus on Time in Range", Diabetes Care, vol. 42, n.º 8, pp. 1593–1603, 2019.',
+'[12] R. W. Beck, T. D. Riddlesworth, K. Ruedy et al., "Continuous Glucose Monitoring Versus Usual Care in Patients With Type 1 Diabetes (REPLACE-BG)", Diabetes Care, vol. 40, n.º 4, pp. 538–545, 2017.',
+'[13] F. Pedregosa et al., "Scikit-learn: Machine Learning in Python", Journal of Machine Learning Research, vol. 12, pp. 2825–2830, 2011.',
+'[14] S. Seabold y J. Perktold, "Statsmodels: Econometric and statistical modeling with Python", en Proc. 9th Python in Science Conf., 2010.',
+]
+for r in refs:
+    p = doc.add_paragraph(); p.alignment = AL.JUSTIFY; p.paragraph_format.space_after = Pt(3)
+    _font(p.add_run(r), "Times New Roman", 10)
+
+doc.save(OUT)
+print("Guardado:", OUT)
