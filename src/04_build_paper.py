@@ -102,7 +102,9 @@ para("El trasplante de islotes pancreáticos promete algo que hasta hace poco pa
 "el mal control resultó frecuente —dos de cada tres pacientes con variabilidad alta o tiempo en rango "
 "insuficiente—, solo el 3,5 % reunió el perfil completo que justificaría evaluar un trasplante. Además, la "
 "hipoglucemia inadvertida se asoció con los años de enfermedad y la edad, y no con las métricas de glucosa "
-"del momento, lo que sugiere que la decisión no puede apoyarse únicamente en el CGM reciente. El resultado es "
+"del momento, lo que sugiere que la decisión no puede apoyarse únicamente en el CGM reciente. A ello se suma "
+"un modelo de alerta temprana que, entrenado sobre unas 0,8 millones de ventanas de CGM y validado por "
+"paciente, anticipa la hipoglucemia a 30 minutos con alta discriminación (AUC-ROC 0,98). El resultado es "
 "una herramienta objetiva y reproducible para priorizar a los candidatos, que respalda con números la "
 "necesidad de una selección estricta.", italic=True)
 runs_para([("Palabras clave: ", True, False),
@@ -122,8 +124,9 @@ para("Pancreatic islet transplantation offers something long thought out of reac
 "patients had high variability or insufficient time in range— only 3.5% met the full profile that would "
 "justify evaluating a transplant. Moreover, impaired awareness of hypoglycemia was associated with disease "
 "duration and age rather than current glucose metrics, suggesting the decision cannot rest on recent CGM "
-"alone. The result is an objective, reproducible tool to prioritize candidates that quantitatively supports "
-"strict selection.", italic=True)
+"alone. In addition, an early-warning model trained on ~0.8 million CGM windows and validated at the patient "
+"level anticipates hypoglycemia 30 minutes ahead with high discrimination (AUC-ROC 0.98). The result is an "
+"objective, reproducible tool to prioritize candidates that quantitatively supports strict selection.", italic=True)
 runs_para([("Keywords: ", True, True),
 ("islet transplantation; type 1 diabetes; continuous glucose monitoring; glycemic lability; "
 "candidate stratification; data science.", False, True)])
@@ -218,6 +221,18 @@ para("Los criterios de la indicación de trasplante se operacionalizaron combina
 "CGM, la duración de la enfermedad y la edad. Por último, se evaluó la robustez del criterio de candidatura "
 "mediante un análisis de sensibilidad que recalcula su prevalencia al variar el umbral operacional de "
 "exposición a hipoglucemia.")
+h2("3.4. Alerta temprana de hipoglucemia")
+para("Como componente de apoyo a la decisión se planteó, además, un modelo de anticipación de la "
+"hipoglucemia —un problema reconocido de la analítica de CGM (Oviedo et al. [17])—. En lugar de tratar cada "
+"paciente como una unidad, se reencuadró la señal en ventanas deslizantes: a partir de los 60 minutos previos "
+"de CGM se predice si la glucosa caerá por debajo de 70 mg/dL en los siguientes 30 minutos. De cada ventana "
+"se extrajeron variables interpretables (glucosa actual, media, desvío, mínimo, máximo, pendiente, variación, "
+"proporción de lecturas bajas y hora del día), descartando las que cruzaban huecos del sensor, lo que "
+"produjo cerca de 0,8 millones de ejemplos etiquetados. Se compararon una línea base ingenua (solo la glucosa "
+"actual), una regresión logística y un modelo de gradient boosting (scikit-learn [13]), evaluados con "
+"partición POR PACIENTE —ningún paciente comparte ventanas entre entrenamiento y test, para evitar la fuga de "
+"información— y validación cruzada por grupos. Se reportan el área bajo la curva ROC y la de precisión-recall, "
+"más apropiada ante el desbalance de clases, y la importancia de permutación como lente de interpretabilidad.")
 
 # ============================== 4. RESULTADOS ==============================
 h1("4. Resultados")
@@ -291,6 +306,21 @@ para("La prevalencia de la candidatura depende, como toda operacionalización, d
 figura(FIG/"fig7_indices_riesgo.png", "Figura 7. Índices de riesgo glucémico de Kovatchev (LBGI, HBGI, ADRR) según el perfil de labilidad.", width=15)
 tabla_csv(TAB/"tabla7_sensibilidad.csv", "Tabla 6. Sensibilidad de la prevalencia de candidatura al umbral operacional de hipoglucemia (TBR<54).")
 
+h2("4.6. Alerta temprana de hipoglucemia")
+para("El reencuadre en ventanas generó 795.851 ejemplos (prevalencia de hipoglucemia a 30 minutos del 5,8%). "
+"Sobre pacientes no vistos en el entrenamiento, el modelo de gradient boosting alcanzó un AUC-ROC de 0,985 y "
+"un AUC-PR de 0,857, y se mantuvo estable en validación cruzada por grupos (AUC-ROC 0,984 ± 0,001), lo que "
+"confirma que no hay fuga de información (Tabla 7, Figura 8). Es honesto señalar que la línea base ingenua —la "
+"glucosa actual— ya es un predictor fuerte (AUC-ROC 0,974), porque el nivel presente condiciona el de los "
+"próximos minutos; el aporte del aprendizaje automático se ve sobre todo en la precisión-recall (AUC-PR del "
+"0,803 al 0,857), la métrica que gobierna las falsas alarmas en un sistema de alerta. La importancia de "
+"permutación (Figura 9) muestra que el modelo se apoya en la glucosa actual, la media reciente, la tendencia "
+"y la variabilidad de la ventana —variables clínicamente interpretables—, lo que lo vuelve utilizable como "
+"apoyo transparente y no como una caja negra.")
+figura(FIG/"fig8_roc_pr.png", "Figura 8. Alerta temprana de hipoglucemia a 30 minutos: curvas ROC y precisión-recall en pacientes no vistos.", width=16)
+tabla_csv(TAB/"tabla8_early_warning.csv", "Tabla 7. Desempeño de los modelos de alerta temprana de hipoglucemia (test por paciente).")
+figura(FIG/"fig9_importancia_ew.png", "Figura 9. Importancia de permutación: variables que más pesan en la alerta de hipoglucemia.", width=12)
+
 # ============================== 5. DISCUSIÓN ==============================
 h1("5. Discusión")
 para("Los resultados cuantifican una intuición clínica central del trasplante de islotes: aunque la carga "
@@ -335,7 +365,8 @@ para("Se presentó un pipeline reproducible de ciencia de datos que, sobre 14,8 
 "hipoglucemia inadvertida se asoció a la duración de la enfermedad y a la edad más que al CGM del momento. "
 "Más allá del hallazgo clínico, el trabajo deja un procedimiento reproducible —de la señal cruda a los "
 "índices de riesgo validados y al criterio de candidatura— que puede auditarse y reutilizarse en otras "
-"cohortes, y que se plantea como apoyo a la "
+"cohortes, sumado a un modelo interpretable de alerta temprana que anticipa la hipoglucemia a 30 minutos "
+"(validado por paciente). Todo ello se plantea como apoyo a la "
 "decisión, en sintonía con el factor humano de la inteligencia artificial (Humanware 5.0): una herramienta "
 "que asiste, sin reemplazar, el juicio del profesional.", first_indent=0.5)
 para("Como líneas futuras se plantea: (i) aplicar el pipeline a cohortes con indicación real de trasplante "
@@ -363,6 +394,7 @@ refs = [
 '[14] S. Seabold y J. Perktold, "Statsmodels: Econometric and statistical modeling with Python", en Proc. 9th Python in Science Conf., 2010.',
 '[15] B. P. Kovatchev, E. Otto, D. Cox, L. Gonder-Frederick y W. Clarke, "Evaluation of a New Measure of Blood Glucose Variability in Diabetes", Diabetes Care, vol. 29, n.º 11, pp. 2433–2438, 2006.',
 '[16] E. A. Ryan, T. Shandro, K. Green et al., "Assessment of the Severity of Hypoglycemia and Glycemic Lability in Type 1 Diabetic Subjects Undergoing Islet Transplantation", Diabetes, vol. 53, n.º 4, pp. 955–962, 2004.',
+'[17] S. Oviedo, J. Vehí, R. Calm y J. Armengol, "A review of personalized blood glucose prediction strategies for T1DM patients", International Journal for Numerical Methods in Biomedical Engineering, vol. 33, n.º 6, e2833, 2017.',
 ]
 for r in refs:
     p = doc.add_paragraph(); p.alignment = AL.JUSTIFY; p.paragraph_format.space_after = Pt(3)

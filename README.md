@@ -12,6 +12,10 @@ consenso internacional de CGM.
 - **Hallazgos:** variabilidad alta (%CV≥36%) en el 64,6% y TIR insuficiente en el 71,7%, pero
   solo el **3,5%** reúne el perfil completo de labilidad (candidatura). La hipoglucemia
   inadvertida se asocia a la duración de la DM1 y la edad, no al CGM del momento.
+- **Índices de riesgo validados (Kovatchev):** LBGI/HBGI/ADRR calculados sobre la señal cruda; el
+  LBGI corrobora el criterio de candidatura (mayor en el grupo de labilidad, p=0,008).
+- **Alerta temprana de hipoglucemia:** modelo de ML sobre ~0,8 M de ventanas de CGM que anticipa la
+  hipoglucemia a 30 min (AUC-ROC 0,98), validado por paciente (sin fuga de información).
 
 Trabajo del grupo CAETI — Universidad Abierta Interamericana (UAI).
 
@@ -40,7 +44,9 @@ python src/01_cgm_metrics.py
 python src/02_build_dataset.py
 # 4) Análisis: figuras y tablas:
 python src/03_pipeline.py
-# 5) Paper .docx:
+# 5) Alerta temprana de hipoglucemia (ML sobre ventanas de CGM):
+python src/05_early_warning.py
+# 6) Paper .docx:
 python src/04_build_paper.py
 ```
 
